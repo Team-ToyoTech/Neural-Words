@@ -13,36 +13,4 @@
     <SourceRoot Include="C:\Users\이동하\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <None Include="$(NuGetPackageRoot)fasttext.netwrapper\1.3.1\contentFiles\any\any\fasttext.dll" Condition="Exists('$(NuGetPackageRoot)fasttext.netwrapper\1.3.1\contentFiles\any\any\fasttext.dll')">
-      <NuGetPackageId>FastText.NetWrapper</NuGetPackageId>
-      <NuGetPackageVersion>1.3.1</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>fasttext.dll</TargetPath>
-      <Private>True</Private>
-      <Link>fasttext.dll</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)fasttext.netwrapper\1.3.1\contentFiles\any\any\libfasttext.dylib" Condition="Exists('$(NuGetPackageRoot)fasttext.netwrapper\1.3.1\contentFiles\any\any\libfasttext.dylib')">
-      <NuGetPackageId>FastText.NetWrapper</NuGetPackageId>
-      <NuGetPackageVersion>1.3.1</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>libfasttext.dylib</TargetPath>
-      <Private>True</Private>
-      <Link>libfasttext.dylib</Link>
-    </None>
-    <None Include="$(NuGetPackageRoot)fasttext.netwrapper\1.3.1\contentFiles\any\any\libfasttext.so" Condition="Exists('$(NuGetPackageRoot)fasttext.netwrapper\1.3.1\contentFiles\any\any\libfasttext.so')">
-      <NuGetPackageId>FastText.NetWrapper</NuGetPackageId>
-      <NuGetPackageVersion>1.3.1</NuGetPackageVersion>
-      <NuGetItemType>None</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>libfasttext.so</TargetPath>
-      <Private>True</Private>
-      <Link>libfasttext.so</Link>
-    </None>
-  </ItemGroup>
 </Project>
