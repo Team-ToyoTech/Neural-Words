@@ -5,7 +5,105 @@
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v8.0": {}
+    ".NETCoreApp,Version=v8.0": {
+      "AutoMapper/10.1.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.Reflection.Emit": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.1.1.0"
+          }
+        }
+      },
+      "FastText.Native.Linux/1.0.115": {},
+      "FastText.Native.MacOs/1.0.115": {},
+      "FastText.Native.Windows/1.0.115": {},
+      "FastText.NetWrapper/1.3.1": {
+        "dependencies": {
+          "AutoMapper": "10.1.1",
+          "FastText.Native.Linux": "1.0.115",
+          "FastText.Native.MacOs": "1.0.115",
+          "FastText.Native.Windows": "1.0.115",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FastText.NetWrapper.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {},
+      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Reflection.Emit/4.7.0": {}
+    }
   },
-  "libraries": {}
+  "libraries": {
+    "AutoMapper/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uMgbqOdu9ZG5cIOty0C85hzzayBH2i9BthnS5FlMqKtMSHDv4ts81a2jS1VFaDBVhlBeIqJ/kQKjQY95BZde9w==",
+      "path": "automapper/10.1.1",
+      "hashPath": "automapper.10.1.1.nupkg.sha512"
+    },
+    "FastText.Native.Linux/1.0.115": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-STFH4QGIE6P1Gw2IheaW1FlZO2sZ4nGuQBPxVvvZn+kdi6Kkll8dxZU2YDyYPJP7vvXS5y25hvg8c+EAyXTRXg==",
+      "path": "fasttext.native.linux/1.0.115",
+      "hashPath": "fasttext.native.linux.1.0.115.nupkg.sha512"
+    },
+    "FastText.Native.MacOs/1.0.115": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OIs0G3ETC37sAgFrxIswwc8A5zY1ga1wQ1XKtvP7KpKNT+fB1dPLOIGCeTJucLbbrZ8OKu7CKLkbnJmSgOkCKw==",
+      "path": "fasttext.native.macos/1.0.115",
+      "hashPath": "fasttext.native.macos.1.0.115.nupkg.sha512"
+    },
+    "FastText.Native.Windows/1.0.115": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KniJjRlRMumowTcNN1CvC2G5GB9Er0aql8kddFCiCPGSY+z4ePj0BH/ETXkYE7XdtHkJjqBZnBQQ5F5RcHqPYw==",
+      "path": "fasttext.native.windows/1.0.115",
+      "hashPath": "fasttext.native.windows.1.0.115.nupkg.sha512"
+    },
+    "FastText.NetWrapper/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wA44CYKKfo8Wrm84MtHAUUvObIuR0c71AKGLAwYKYJj2Hp1TKOc4UGl4qAqUFSONQkXgXSikwBxb7sZsH4fSfg==",
+      "path": "fasttext.netwrapper/1.3.1",
+      "hashPath": "fasttext.netwrapper.1.3.1.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/HggWBbTwy8TgebGSX5DBZ24ndhzi93sHUBDvP1IxbZD7FDokYzdAr6+vbWGjw2XAfR2EJ1sfKUotpjHnFWPxA==",
+      "path": "microsoft.extensions.logging.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
+      "path": "system.reflection.emit/4.7.0",
+      "hashPath": "system.reflection.emit.4.7.0.nupkg.sha512"
+    }
+  }
 }
