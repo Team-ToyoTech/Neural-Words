@@ -2,9 +2,9 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace Client_test
+namespace Client
 {
-    public partial class Form1 : Form
+    public partial class Client : Form
     {
         private TcpClient client;
         private NetworkStream stream;
@@ -13,7 +13,7 @@ namespace Client_test
         bool isconnected;
         string nickname;
         static string str;
-        public Form1()
+        public Client()
         {
             InitializeComponent();
             button2.Enabled = false;

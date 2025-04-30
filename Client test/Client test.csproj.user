@@ -4,5 +4,8 @@
     <Compile Update="Client.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="WordSimilarity.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
