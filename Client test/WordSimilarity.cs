@@ -11,14 +11,15 @@ using System.Windows.Forms;
 using FastText.NetWrapper;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace WordSimilarity
+namespace Client_test
 {
     public partial class WordSimilarity : Form
     {
         private FastTextWrapper fastText;
+        /* ! 본인 컴 경로로 변경 ! */
         private string filePath = "D:\\Machine Learning\\cc.ko.300.bin"; // 모델 경로
 
-        public WordSimilarity()
+        public WordSimilarity(Client Form)
         {
             InitializeComponent();
             fastText = new FastTextWrapper();
@@ -43,17 +44,6 @@ namespace WordSimilarity
             var vector = fastText.GetWordVector(WordInput.Text);
             var givenVector = fastText.GetWordVector(GivenWord.Text);
 
-            // (도쿄 - 일본 + 한국)과 서울 벡터 비교 -> 56.8%
-            // var vector1 = fastText.GetWordVector("도쿄");
-            // var vector2 = fastText.GetWordVector("일본");
-            // var vector3 = fastText.GetWordVector("한국");
-            // var givenVector = fastText.GetWordVector("서울");
-            // var vector = fastText.GetWordVector("서울");
-            // for (int i = 0; i < vector.Length; i++)
-            // {
-            //     givenVector[i] = vector1[i] - vector2[i] + vector3[i]; // 벡터 연산
-            // }
-
             double norm = 0, givenNorm = 0;
             double dot = 0;
             string score = "";
@@ -63,8 +53,10 @@ namespace WordSimilarity
                 norm += vector[i] * vector[i];
                 givenNorm += givenVector[i] * givenVector[i];
             }
-            score = (dot / Math.Sqrt(norm * givenNorm) * 100).ToString("F1") + "%"; // 점수 계산
+            score = ((dot / Math.Sqrt(norm * givenNorm) + 1) / 2 * 100).ToString("F1") + "%"; // 점수 계산
             Score.Text = score; // 점수 출력
+            
+            // TODO: 서버로 점수 보내기 구현
 
             // 벡터 내용 확인 (모두 출력)
             // label1.Text = vector.Length.ToString() + " " + givenVector.Length.ToString() + "\n";
@@ -77,8 +69,6 @@ namespace WordSimilarity
             // {
             //     label1.Text += i.ToString() + " ";
             // }
-
-            // TODO: 서버로 점수 보내기 구현
         }
     }
 }

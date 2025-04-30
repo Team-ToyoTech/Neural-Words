@@ -2,13 +2,14 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace Client
+namespace Client_test
 {
     public partial class Client : Form
     {
         private TcpClient client;
         private NetworkStream stream;
         private Thread receiveThread;
+        private WordSimilarity wordSimilarity;
         int mynum;
         bool isconnected;
         string nickname;
@@ -133,7 +134,17 @@ namespace Client
                     {
                         Invoke(new Action(() => listBox2.Items.Remove(message[1])));
                     }
-                    Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
+                    else if (message[0] == "6")
+                    {
+                        wordSimilarity = new WordSimilarity(this);
+                        wordSimilarity.Show();
+                    }
+                    else if (message[0] == "7")
+                    {
+                        wordSimilarity.Close();
+                        wordSimilarity.Dispose();
+                    }
+                        Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
                 }
                 catch (Exception ex)
                 {

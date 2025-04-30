@@ -13,6 +13,7 @@ namespace Server_test
         List<Thread> Tt;
         static bool isServerRun;
         static bool isClosing;
+        static bool isGameRun;
         FastTextWrapper model = new FastTextWrapper();
         public Form1()
         {
@@ -57,6 +58,8 @@ namespace Server_test
         3: 닉네임 전송(클라이언트=>서버)
         4: 접속한 클라이언트 이름
         5: 접속 종료한 클라이언트 이름
+        6: 게임 시작
+        7: 게임 종료
          */
         // Split 문자 : ⧫
         // 송신 Check 문자 : ◊
@@ -80,7 +83,7 @@ namespace Server_test
             server = new TcpListener(IPAddress.Any, port);
             server.Start();
             isServerRun = true;
-            
+
             int count = 0;
             byte[] buffer;
 
@@ -91,7 +94,7 @@ namespace Server_test
                     clients.Add(new Client(server.AcceptTcpClient(), count));
                     Invoke(new Action(() => listBox2.Items.Add(clients[clients.Count - 1].nickname)));
                     count++;
-                    
+
                     Tt.Add(new Thread(() => ClientCheck(clients.Count - 1, count)));
                     Delay(100);
                     clients[clients.Count - 1].client.GetStream().Write(Encoding.UTF8.GetBytes($"2⧫{count}◊"));
@@ -119,7 +122,7 @@ namespace Server_test
                 {
 
                     buffer = new byte[102400];
-                    if(msg != "")
+                    if (msg != "")
                     {
                         buffer = Encoding.UTF8.GetBytes(msg);
                     }
@@ -156,8 +159,8 @@ namespace Server_test
                     }
                     else if (message[0] == "1")
                     {
-                        
-                        
+
+
                         Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} disconnected...")));
                         Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
                         foreach (var c in clients)
@@ -172,7 +175,7 @@ namespace Server_test
                                 cStream.Write(Encoding.UTF8.GetBytes($"5⧫{client.nickname}◊"));
                                 cStream.Flush();
                             }
-                            
+
                         }
                         break;
                     }
@@ -180,14 +183,14 @@ namespace Server_test
                     {
                         foreach (var c in clients)
                         {
-                            if(c.nickname == message[1])
+                            if (c.nickname == message[1])
                             {
                                 string nickname = "";
                                 foreach (var c2 in clients)
                                 {
-                                    if(c2 != client) nickname += c2.nickname + ", ";
+                                    if (c2 != client) nickname += c2.nickname + ", ";
                                 }
-                                client.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫닉네임은 다음과 같을 수 없습니다:"+ nickname+ '◊'));
+                                client.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫닉네임은 다음과 같을 수 없습니다:" + nickname + '◊'));
                                 clients.Remove(client);
                                 Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
                                 int b = 0;
@@ -198,14 +201,14 @@ namespace Server_test
                         clients.Remove(client);
                         Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
                         client.nickname = message[1];
-                        foreach(var c in clients)
+                        foreach (var c in clients)
                         {
                             client.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + c.nickname + '◊'));
                             client.client.GetStream().Flush();
                             Delay(100);
                         }
                         clients.Add(client);
-                        foreach(var c in clients)
+                        foreach (var c in clients)
                         {
                             c.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + client.nickname + '◊'));
                         }
@@ -223,7 +226,7 @@ namespace Server_test
                 catch (Exception e)
                 {
 
-                    
+
                     break;
                 }
             }
@@ -247,7 +250,6 @@ namespace Server_test
                 clients.Remove(client);
             }
         }
-        //TODO: 현재 접속자명 listbox 만들기
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -350,7 +352,44 @@ namespace Server_test
                 }
             }
         }
+
+        private void button5_Click(object sender, EventArgs e) // 게임 시작
+        {
+            if (clients.Count >= 2)
+            {
+                button4.Enabled = true; // 게임 종료 버튼 활성화
+                button5.Enabled = false; // 게임 시작 버튼 비활성화
+                Thread t = new Thread(Game);
+                t.IsBackground = true;
+                t.Start();
+                isGameRun = true;
+            }
+            else
+            {
+                MessageBox.Show("최소 2명의 플레이어가 필요합니다.");
+            }
+        }
+
+        void Game()
+        {
+            foreach (var c in clients)
+            {
+                c.Send("6", "");
+                Delay(10);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e) // 게임 종료
+        {
+            foreach (var c in clients)
+            {
+                c.Send("7", "");
+                Delay(10);
+            }
+            isGameRun = false;
+        }
     }
+
     class Client
     {
         public TcpClient client;
@@ -361,10 +400,16 @@ namespace Server_test
             this.client = client;
             nickname = "Client" + n.ToString();
         }
+
         public Client(TcpClient client, string str)
         {
             this.client = client;
             nickname = str;
+        }
+
+        public void Send(string type, string msg)
+        {
+            client.GetStream().Write(Encoding.UTF8.GetBytes(type + "⧫" + msg + "◊"));
         }
     }
 }

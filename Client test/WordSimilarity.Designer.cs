@@ -1,4 +1,4 @@
-﻿namespace WordSimilarity
+﻿namespace Client_test
 {
     partial class WordSimilarity
     {

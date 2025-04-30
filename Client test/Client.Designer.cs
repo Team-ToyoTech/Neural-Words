@@ -1,4 +1,4 @@
-﻿namespace Client
+﻿namespace Client_test
 {
     partial class Client
     {
