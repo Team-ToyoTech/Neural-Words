@@ -13,7 +13,6 @@ namespace Server_test
         List<Thread> Tt;
         static bool isServerRun;
         static bool isClosing;
-        static bool isGameRun;
         FastTextWrapper model = new FastTextWrapper();
         public Form1()
         {
@@ -362,7 +361,6 @@ namespace Server_test
                 Thread t = new Thread(Game);
                 t.IsBackground = true;
                 t.Start();
-                isGameRun = true;
             }
             else
             {
@@ -379,6 +377,12 @@ namespace Server_test
             }
         }
 
+        private void GetRandomWord()
+        {
+            string path = "D:\\Machine Learning\\Word Similarity\\wordList-utf8.txt";
+            string randomWord = RandomWordSelector.GetRandomWord(path);
+        }
+
         private void button4_Click(object sender, EventArgs e) // 게임 종료
         {
             foreach (var c in clients)
@@ -386,7 +390,6 @@ namespace Server_test
                 c.Send("7", "");
                 Delay(10);
             }
-            isGameRun = false;
         }
     }
 
