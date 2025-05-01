@@ -334,11 +334,31 @@ namespace Server_test
 
         static string GetExternalIPAddress()
         {
-            using (WebClient client = new WebClient())
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            try
             {
-                string response = client.DownloadString("https://api.ipify.org");
-                return response;
+                using (WebClient client = new WebClient())
+                {
+                    string externalIp = client.DownloadString("https://api.ipify.org");
+                    return externalIp;
+                }
             }
+            catch (WebException ex)
+            {
+                Console.WriteLine("웹 예외 발생: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("내부 예외: " + ex.InnerException.Message);
+                }
+                return "오류 발생";
+            }
+
+            // using (WebClient client = new WebClient())
+            // {
+            //     string response = client.DownloadString("https://api.ipify.org");
+            //     return response;
+            // }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -410,6 +430,14 @@ namespace Server_test
             {
                 c.Send("7", "");
                 Delay(10);
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
             }
         }
     }

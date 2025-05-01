@@ -86,7 +86,7 @@ namespace Client_test
                     }
                     else if (message[0] == "1")
                     {
-                        
+
                         client.Close();
                         if (message[1] != "")
                             MessageBox.Show(message[1]);
@@ -113,7 +113,7 @@ namespace Client_test
                             nickname = "Client" + mynum.ToString();
                             Invoke(new Action(() => textBox4.Text = nickname));
                         }
-                        else if(!str.Contains('⧫'))
+                        else if (!str.Contains('⧫'))
                         {
                             nickname = str;
                         }
@@ -130,7 +130,7 @@ namespace Client_test
                     {
                         Invoke(new Action(() => listBox2.Items.Add(message[1])));
                     }
-                    else if(message[0] == "5")
+                    else if (message[0] == "5")
                     {
                         Invoke(new Action(() => listBox2.Items.Remove(message[1])));
                     }
@@ -153,7 +153,7 @@ namespace Client_test
                             wordSimilarity.ReceiveMessage(getWord);
                         }
                     }
-                    
+
                     Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
                 }
                 catch (Exception ex)
@@ -246,6 +246,14 @@ namespace Client_test
                 {
                     MessageBox.Show("다음 문자는 포함되어서는 안됩니다: ⧫, ◊");
                 }
+            }
+        }
+
+        private void textBox4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
             }
         }
     }

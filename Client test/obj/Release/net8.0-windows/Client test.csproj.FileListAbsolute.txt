@@ -14,3 +14,29 @@ C:\Users\endiy\source\repos\Server test\Client test\obj\Release\net8.0-windows\r
 C:\Users\endiy\source\repos\Server test\Client test\obj\Release\net8.0-windows\Client test.pdb
 C:\Users\endiy\source\repos\Server test\Client test\obj\Release\net8.0-windows\Client test.genruntimeconfig.cache
 C:\Users\endiy\source\repos\Server test\Client test\obj\Release\net8.0-windows\ref\Client test.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\fasttext.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\libfasttext.dylib
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\libfasttext.so
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\Client test.exe
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\Client test.deps.json
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\Client test.runtimeconfig.json
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\Client test.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\Client test.pdb
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\AutoMapper.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\FastText.NetWrapper.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.csproj.AssemblyReference.cache
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client_test.Client.resources
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client_test.WordSimilarity.resources
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.csproj.GenerateResource.cache
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.AssemblyInfoInputs.cache
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.AssemblyInfo.cs
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.csproj.CoreCompileInputs.cache
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.sourcelink.json
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client t.E032842A.Up2Date
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\refint\Client test.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.pdb
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.genruntimeconfig.cache
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\ref\Client test.dll

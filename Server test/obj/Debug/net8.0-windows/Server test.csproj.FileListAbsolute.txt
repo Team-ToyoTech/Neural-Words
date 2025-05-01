@@ -14,25 +14,17 @@ C:\Users\endiy\source\repos\Server test\Server test\obj\Debug\net8.0-windows\ref
 C:\Users\endiy\source\repos\Server test\Server test\obj\Debug\net8.0-windows\Server test.pdb
 C:\Users\endiy\source\repos\Server test\Server test\obj\Debug\net8.0-windows\Server test.genruntimeconfig.cache
 C:\Users\endiy\source\repos\Server test\Server test\obj\Debug\net8.0-windows\ref\Server test.dll
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\fasttext.dll
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\libfasttext.dylib
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\libfasttext.so
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\Server test.exe
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\Server test.deps.json
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\Server test.runtimeconfig.json
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\Server test.dll
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\Server test.pdb
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\AutoMapper.dll
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\FastText.NetWrapper.dll
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.csproj.AssemblyReference.cache
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.csproj.GenerateResource.cache
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.AssemblyInfoInputs.cache
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.AssemblyInfo.cs
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.csproj.CoreCompileInputs.cache
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.sourcelink.json
-C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server t.5DD2DC57.Up2Date
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.dll
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\refint\Server test.dll
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.pdb

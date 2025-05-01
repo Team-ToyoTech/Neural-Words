@@ -148,6 +148,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(155, 31);
             textBox4.TabIndex = 10;
+            textBox4.KeyDown += textBox4_KeyDown;
             // 
             // groupBox1
             // 
@@ -171,7 +172,7 @@
             listBox2.Size = new Size(304, 379);
             listBox2.TabIndex = 0;
             // 
-            // Form1
+            // Client
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -190,7 +191,7 @@
             Controls.Add(listBox1);
             KeyPreview = true;
             Margin = new Padding(2);
-            Name = "Form1";
+            Name = "Client";
             Text = "Chat Client";
             FormClosing += Form1_FormClosing;
             KeyDown += Form1_KeyDown;

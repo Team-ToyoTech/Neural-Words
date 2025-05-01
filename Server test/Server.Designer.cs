@@ -60,6 +60,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(155, 31);
             textBox1.TabIndex = 1;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // button1
             // 
@@ -166,7 +167,7 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
-            // Form1
+            // Server
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -184,7 +185,7 @@
             Controls.Add(label1);
             KeyPreview = true;
             Margin = new Padding(2);
-            Name = "Form1";
+            Name = "Server";
             Text = "Chat Server";
             FormClosing += Form1_FormClosing;
             KeyDown += Form1_KeyDown;
