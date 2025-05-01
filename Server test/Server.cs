@@ -2,7 +2,6 @@
 using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
-using FastText.NetWrapper;
 
 namespace Server_test
 {
@@ -14,7 +13,6 @@ namespace Server_test
         List<Thread> Tt;
         static bool isServerRun;
         static bool isClosing;
-        FastTextWrapper model = new FastTextWrapper();
         double[] clientScore;
 
         public Server()
