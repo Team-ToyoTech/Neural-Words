@@ -414,12 +414,18 @@ namespace Server_test
                 c.Send("6", "");
                 Delay(10);
             }
+
+            string rndWrd = GetRandomWord(); // 랜덤 단어 가져오기
+            foreach (var c in clients)
+            {
+                c.Send("8", rndWrd);
+            }
         }
 
         private string GetRandomWord()
         {
             /* ! 본인 컴 경로로 바꾸기 ! */
-            string path = "D:\\Machine Learning\\Word Similarity\\wordList-utf8.txt";
+            string path = "wordList-utf8.txt";
             string randomWord = RandomWordSelector.GetRandomWord(path);
             return randomWord;
         }

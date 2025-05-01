@@ -20,18 +20,13 @@ namespace Client_test
 
         private FastTextWrapper fastText;
         /* ! 본인 컴 경로로 변경 ! */
-        private string filePath = "D:\\Machine Learning\\cc.ko.300.bin"; // 모델 경로
+        private string filePath = "cc.ko.300.bin"; // 모델 경로
 
         public WordSimilarity(Client Form)
         {
             InitializeComponent();
             fastText = new FastTextWrapper();
             fastText.LoadModel(filePath);
-
-            // TODO: 서버에서 단어 가져오기
-            // string path = @"D:\\Machine Learning\\wordList-utf8.txt";
-            // string randomWord = RandomWordSelector.GetRandomWord(path);
-            // GivenWord.Text = randomWord; // 초기 단어 설정
         }
 
         private void WordInput_KeyDown(object sender, KeyEventArgs e)
