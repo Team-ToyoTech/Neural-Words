@@ -101,7 +101,8 @@ namespace Server_test
 
                     Tt.Add(new Thread(() => ClientCheck(clients.Count - 1, count)));
                     Delay(100);
-                    clients[clients.Count - 1].client.GetStream().Write(Encoding.UTF8.GetBytes($"2⧫{count}◊"));
+                    clients[clients.Count - 1].Send("2", count.ToString());
+                    // clients[clients.Count - 1].client.GetStream().Write(Encoding.UTF8.GetBytes($"2⧫{count}◊"));
                     Tt[Tt.Count - 1].IsBackground = true;
                     Tt[Tt.Count - 1].Start();
                 }
@@ -125,7 +126,6 @@ namespace Server_test
             {
                 try
                 {
-
                     buffer = new byte[102400];
                     if (msg != "")
                     {
@@ -195,7 +195,8 @@ namespace Server_test
                                 {
                                     if (c2 != client) nickname += c2.nickname + ", ";
                                 }
-                                client.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫닉네임은 다음과 같을 수 없습니다:" + nickname + '◊'));
+                                client.Send("1", "닉네임은 다음과 같을 수 없습니다: " + nickname);
+                                // client.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫닉네임은 다음과 같을 수 없습니다:" + nickname + '◊'));
                                 clients.Remove(client);
                                 Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
                                 int b = 0;
@@ -208,14 +209,16 @@ namespace Server_test
                         client.nickname = message[1];
                         foreach (var c in clients)
                         {
-                            client.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + c.nickname + '◊'));
+                            client.Send("4", c.nickname);
+                            // client.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + c.nickname + '◊'));
                             client.client.GetStream().Flush();
                             Delay(100);
                         }
                         clients.Add(client);
                         foreach (var c in clients)
                         {
-                            c.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + client.nickname + '◊'));
+                            c.Send("4", client.nickname);
+                            // c.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + client.nickname + '◊'));
                         }
                         Invoke(new Action(() => listBox2.Items.Add(client.nickname)));
                         Invoke(new Action(() => listBox1.Items.Add($"{message[1]} joined")));
@@ -229,6 +232,16 @@ namespace Server_test
                     else if (message[0] == "9")
                     {
                         clientScore[clientrealnumber] += double.Parse(message[1]);
+                        receivedClientCnt++;
+                        if (receivedClientCnt == clients.Count)
+                        {
+                            receivedClientCnt = 0;
+                            string rndWrd = GetRandomWord();
+                            foreach (var c in clients)
+                            {
+                                c.Send("8", rndWrd);
+                            }
+                        }
                     }
 
                     Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
@@ -388,10 +401,11 @@ namespace Server_test
             }
         }
 
-        private void GetRandomWord()
+        private string GetRandomWord()
         {
             string path = "D:\\Machine Learning\\Word Similarity\\wordList-utf8.txt";
             string randomWord = RandomWordSelector.GetRandomWord(path);
+            return randomWord;
         }
 
         private void button4_Click(object sender, EventArgs e) // 게임 종료
