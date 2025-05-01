@@ -20,9 +20,6 @@ namespace Server_test
         public Form1()
         {
             InitializeComponent();
-            string filePath = "cc.ko.300.bin";
-            model.LoadModel(filePath);
-            //사용방법 : var vector = model.GetWordVector("안녕하세요");
             clients = new List<Client>();
             isServerRun = false;
             T = new Thread(() => ServerLoop(1111));
@@ -81,7 +78,7 @@ namespace Server_test
             return;
         }
 
-        //Thread func
+        // Thread func
         void ServerLoop(int port)
         {
             server = new TcpListener(IPAddress.Any, port);
@@ -236,7 +233,7 @@ namespace Server_test
                         if (receivedClientCnt == clients.Count)
                         {
                             receivedClientCnt = 0;
-                            string rndWrd = GetRandomWord();
+                            string rndWrd = GetRandomWord(); // 랜덤 단어 가져오기
                             foreach (var c in clients)
                             {
                                 c.Send("8", rndWrd);
@@ -403,6 +400,7 @@ namespace Server_test
 
         private string GetRandomWord()
         {
+            /* ! 본인 컴 경로로 바꾸기 ! */
             string path = "D:\\Machine Learning\\Word Similarity\\wordList-utf8.txt";
             string randomWord = RandomWordSelector.GetRandomWord(path);
             return randomWord;
