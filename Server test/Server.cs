@@ -246,19 +246,19 @@ namespace Server_test
                     break;
                 }
             }
-            //if (!isClosing && !error)
-            //{
-            //    foreach (var c in clients)
-            //    {
-            //        if (c != clients[clientrealnumber])
-            //        {
-            //            NetworkStream cStream = c.client.GetStream();
-            //            byte[] responseBytes = buffer;
-            //            cStream.Write(Encoding.UTF8.GetBytes($"{clients[clientrealnumber].nickname} disconnected..."));
-            //        }
-            //    }
-            //    Invoke(new Action(() => listBox1.Items.Add($"{clients[clientrealnumber].nickname} disconnected...")));
-            //}
+            // if (!isClosing && !error)
+            // {
+            //     foreach (var c in clients)
+            //     {
+            //         if (c != clients[clientrealnumber])
+            //         {
+            //             NetworkStream cStream = c.client.GetStream();
+            //             byte[] responseBytes = buffer;
+            //             cStream.Write(Encoding.UTF8.GetBytes($"{clients[clientrealnumber].nickname} disconnected..."));
+            //         }
+            //     }
+            //     Invoke(new Action(() => listBox1.Items.Add($"{clients[clientrealnumber].nickname} disconnected...")));
+            // }
             client.client.Close();
             if (!isClosing)
             {

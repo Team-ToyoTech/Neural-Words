@@ -147,11 +147,8 @@ namespace Client_test
                     }
                     else if (message[0] == "8") // 단어 받기
                     {
-                        if (wordSimilarity != null && !wordSimilarity.IsDisposed)
-                        {
-                            string getWord = message[1]; // 받은 단어
-                            wordSimilarity.ReceiveMessage(getWord);
-                        }
+                        string getWord = message[1]; // 받은 단어
+                        wordSimilarity.ReceiveMessage(getWord);
                     }
 
                     Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));

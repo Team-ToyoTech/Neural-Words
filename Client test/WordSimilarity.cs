@@ -57,8 +57,6 @@ namespace Client_test
             string message = score.ToString("F1");
             OnMessageSent?.Invoke(message); // Client로 점수 전송
 
-            // TODO: 서버로 점수 보내기 구현
-
             // 벡터 내용 확인 (모두 출력)
             // label1.Text = vector.Length.ToString() + " " + givenVector.Length.ToString() + "\n";
             // foreach (var i in vector)
