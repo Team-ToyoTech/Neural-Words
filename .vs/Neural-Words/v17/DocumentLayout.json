@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|solutionrelative:server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|solutionrelative:server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|solutionrelative:server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\client test\\wordsimilarity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\wordsimilarity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\client test\\wordsimilarity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\wordsimilarity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\server test\\randomwordselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|solutionrelative:server test\\randomwordselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,21 +69,76 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
+              "Title": "RandomWordSelector.cs",
+              "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\RandomWordSelector.cs",
+              "RelativeDocumentMoniker": "Server test\\RandomWordSelector.cs",
+              "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\RandomWordSelector.cs",
+              "RelativeToolTip": "Server test\\RandomWordSelector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T13:48:10.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WordSimilarity.cs",
+              "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\WordSimilarity.cs",
+              "RelativeDocumentMoniker": "Client test\\WordSimilarity.cs",
+              "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\WordSimilarity.cs",
+              "RelativeToolTip": "Client test\\WordSimilarity.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T12:31:31.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WordSimilarity.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\WordSimilarity.cs",
+              "RelativeDocumentMoniker": "Client test\\WordSimilarity.cs",
+              "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\WordSimilarity.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "Client test\\WordSimilarity.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T12:31:29.311Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Server.cs",
+              "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs",
+              "RelativeDocumentMoniker": "Server test\\Server.cs",
+              "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs",
+              "RelativeToolTip": "Server test\\Server.cs",
+              "ViewState": "AgIAAHQBAAAAAAAAAAAAAA4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T12:27:34.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Client.cs",
               "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\Client.cs",
               "RelativeDocumentMoniker": "Client test\\Client.cs",
               "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\Client.cs",
               "RelativeToolTip": "Client test\\Client.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAuwIoAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T04:30:22.74Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Client.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Client test\\Client.cs",
               "RelativeDocumentMoniker": "Client test\\Client.cs",
@@ -83,27 +150,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Server.cs",
-              "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs",
-              "RelativeDocumentMoniker": "Server test\\Server.cs",
-              "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs",
-              "RelativeToolTip": "Server test\\Server.cs",
-              "ViewState": "AgIAAGoBAAAAAAAAAAAUwGQAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T04:30:28.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Server.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs",
               "RelativeDocumentMoniker": "Server test\\Server.cs",
               "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "Server test\\Server.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T04:30:27.614Z"
+              "WhenOpened": "2025-04-27T04:30:27.614Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
             }
           ]
         }

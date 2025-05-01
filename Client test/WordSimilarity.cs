@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastText.NetWrapper;
 using static System.Formats.Asn1.AsnWriter;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Client_test
 {
     public partial class WordSimilarity : Form
     {
+        public event Action<string> OnMessageSent; // client로 메시지 전송
+
         private FastTextWrapper fastText;
         /* ! 본인 컴 경로로 변경 ! */
         private string filePath = "D:\\Machine Learning\\cc.ko.300.bin"; // 모델 경로
@@ -46,16 +49,19 @@ namespace Client_test
 
             double norm = 0, givenNorm = 0;
             double dot = 0;
-            string score = "";
+            double score = 0;
             for (int i = 0; i < vector.Length; i++)
             {
                 dot += vector[i] * givenVector[i];
                 norm += vector[i] * vector[i];
                 givenNorm += givenVector[i] * givenVector[i];
             }
-            score = ((dot / Math.Sqrt(norm * givenNorm) + 1) / 2 * 100).ToString("F1") + "%"; // 점수 계산
-            Score.Text = score; // 점수 출력
-            
+            score = (dot / Math.Sqrt(norm * givenNorm) + 1) / 2 * 100; // 점수 계산
+            Score.Text = score.ToString("F1") + "%"; // 점수 출력
+
+            string message = score.ToString("F1");
+            OnMessageSent?.Invoke(message); // Client로 점수 전송
+
             // TODO: 서버로 점수 보내기 구현
 
             // 벡터 내용 확인 (모두 출력)
@@ -69,6 +75,11 @@ namespace Client_test
             // {
             //     label1.Text += i.ToString() + " ";
             // }
+        }
+
+        public void ReceiveMessage(string message) // Client에서 단어 받기
+        {
+            GivenWord.Text = message; // 단어 표시
         }
     }
 }

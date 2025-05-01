@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using System.Numerics;
 using System.Text;
 using FastText.NetWrapper;
 
@@ -14,6 +15,8 @@ namespace Server_test
         static bool isServerRun;
         static bool isClosing;
         FastTextWrapper model = new FastTextWrapper();
+        double[] clientScore;
+
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +62,8 @@ namespace Server_test
         5: 접속 종료한 클라이언트 이름
         6: 게임 시작
         7: 게임 종료
+        8: 단어 전송
+        9: 단어 점수 전송
          */
         // Split 문자 : ⧫
         // 송신 Check 문자 : ◊
@@ -115,6 +120,7 @@ namespace Server_test
             buffer[102399] = 255;
             bool error = false;
             string msg = "";
+            int receivedClientCnt = 0;
             while (isServerRun)
             {
                 try
@@ -220,12 +226,15 @@ namespace Server_test
                             s.Write(buffer, 0, buffer.Length);
                         }
                     }
+                    else if (message[0] == "9")
+                    {
+                        clientScore[clientrealnumber] += double.Parse(message[1]);
+                    }
+
                     Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
                 }
                 catch (Exception e)
                 {
-
-
                     break;
                 }
             }
@@ -368,8 +377,10 @@ namespace Server_test
             }
         }
 
-        void Game()
+        void Game() // 게임 플레이
         {
+            clientScore = Enumerable.Repeat<double>(0, clients.Count).ToArray<double>(); // 점수 배열 0으로 초기화, 크기 할당
+
             foreach (var c in clients)
             {
                 c.Send("6", "");

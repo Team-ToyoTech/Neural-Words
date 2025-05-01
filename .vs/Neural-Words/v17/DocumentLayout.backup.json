@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{4CC73108-2CFB-4187-BF46-0F329238B32B}|Client test\\Client test.csproj|solutionrelative:client test\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|c:\\users\\\uC774\uB3D9\uD558\\source\\repos\\neural-words\\server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DA3C08DC-65FD-431F-B8CD-CA9F39C77304}|Server test\\Server test.csproj|solutionrelative:server test\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -103,8 +103,7 @@
               "ToolTip": "C:\\Users\\\uC774\uB3D9\uD558\\Source\\Repos\\Neural-Words\\Server test\\Server.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "Server test\\Server.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T04:30:27.614Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2025-04-27T04:30:27.614Z"
             }
           ]
         }

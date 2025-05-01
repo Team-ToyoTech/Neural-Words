@@ -21,6 +21,7 @@ namespace Client_test
             button3.Enabled = false;
             isconnected = false;
         }
+        string wordScore = "";
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -56,7 +57,6 @@ namespace Client_test
             {
                 try
                 {
-
                     buffer = new byte[102400];
                     if (msg != "")
                     {
@@ -137,6 +137,7 @@ namespace Client_test
                     else if (message[0] == "6")
                     {
                         wordSimilarity = new WordSimilarity(this);
+                        wordSimilarity.OnMessageSent += HandleMessage;
                         wordSimilarity.Show();
                     }
                     else if (message[0] == "7")
@@ -144,15 +145,27 @@ namespace Client_test
                         wordSimilarity.Close();
                         wordSimilarity.Dispose();
                     }
-                        Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
+                    else if (message[0] == "8") // 단어 받기
+                    {
+                        if (wordSimilarity != null && !wordSimilarity.IsDisposed)
+                        {
+                            string getWord = message[1]; // 받은 단어
+                            wordSimilarity.ReceiveMessage(getWord);
+                        }
+                    }
+                    
+                    Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
                 }
                 catch (Exception ex)
                 {
                     break;
                 }
-
-
             }
+        }
+
+        private void HandleMessage(string message) // word similarity 메시지 받아서 server로 전송
+        {
+            stream.Write(Encoding.UTF8.GetBytes("9⧫" + message + "◊"));
         }
 
         private void button2_Click(object sender, EventArgs e)
