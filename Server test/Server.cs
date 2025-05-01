@@ -6,7 +6,7 @@ using FastText.NetWrapper;
 
 namespace Server_test
 {
-    public partial class Form1 : Form
+    public partial class Server : Form
     {
         static TcpListener server;
         static List<Client> clients;
@@ -17,7 +17,7 @@ namespace Server_test
         FastTextWrapper model = new FastTextWrapper();
         double[] clientScore;
 
-        public Form1()
+        public Server()
         {
             InitializeComponent();
             clients = new List<Client>();
