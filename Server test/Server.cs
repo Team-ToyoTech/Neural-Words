@@ -425,7 +425,7 @@ namespace Server_test
         private string GetRandomWord()
         {
             /* ! 본인 컴 경로로 바꾸기 ! */
-            string path = "wordList-utf8.txt";
+            string path = "Server test\\wordList-utf8.txt";
             string randomWord = RandomWordSelector.GetRandomWord(path);
             return randomWord;
         }

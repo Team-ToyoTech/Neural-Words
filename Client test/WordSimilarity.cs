@@ -20,7 +20,7 @@ namespace Client_test
 
         private FastTextWrapper fastText;
         /* ! 본인 컴 경로로 변경 ! */
-        private string filePath = "cc.ko.300.bin"; // 모델 경로
+        private string filePath = "Client test\\cc.ko.300.bin"; // 모델 경로
 
         public WordSimilarity(Client Form)
         {
