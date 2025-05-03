@@ -84,7 +84,6 @@ namespace Server_test
             isServerRun = true;
 
             int count = 0;
-            byte[] buffer;
 
             while (true)
             {
@@ -159,8 +158,6 @@ namespace Server_test
                     }
                     else if (message[0] == "1")
                     {
-
-
                         Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} disconnected...")));
                         Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
                         foreach (var c in clients)
@@ -188,7 +185,8 @@ namespace Server_test
                                 string nickname = "";
                                 foreach (var c2 in clients)
                                 {
-                                    if (c2 != client) nickname += c2.nickname + ", ";
+                                    if (c2 != client)
+                                        nickname += c2.nickname + ", ";
                                 }
                                 client.Send("1", "닉네임은 다음과 같을 수 없습니다: " + nickname);
                                 // client.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫닉네임은 다음과 같을 수 없습니다:" + nickname + '◊'));
@@ -424,8 +422,7 @@ namespace Server_test
 
         private string GetRandomWord()
         {
-            /* ! 본인 컴 경로로 바꾸기 ! */
-            string path = "Server test\\wordList-utf8.txt";
+            string path = Path.Combine(Application.StartupPath, "Server test", "wordList-utf8.txt");
             string randomWord = RandomWordSelector.GetRandomWord(path);
             return randomWord;
         }

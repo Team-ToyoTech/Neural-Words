@@ -31,3 +31,4 @@ C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-window
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server test.genruntimeconfig.cache
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\ref\Server test.dll
 C:\Users\이동하\Source\Repos\Neural-Words\Server test\obj\Debug\net8.0-windows\Server_test.Server.resources
+C:\Users\이동하\Source\Repos\Neural-Words\Server test\bin\Debug\net8.0-windows\wordList-utf8.txt

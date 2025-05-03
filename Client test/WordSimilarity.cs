@@ -19,8 +19,7 @@ namespace Client_test
         public event Action<string> OnMessageSent; // client로 메시지 전송
 
         private FastTextWrapper fastText;
-        /* ! 본인 컴 경로로 변경 ! */
-        private string filePath = "Client test\\cc.ko.300.bin"; // 모델 경로
+        private string filePath = Path.Combine(Application.StartupPath, "Client test", "cc.ko.300.bin"); // 모델 경로
 
         public WordSimilarity(Client Form)
         {

@@ -17,4 +17,10 @@
     <Optimize>True</Optimize>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="wordList-utf8.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

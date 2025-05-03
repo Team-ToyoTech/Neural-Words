@@ -40,3 +40,4 @@ C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-wind
 C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.pdb
 C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.genruntimeconfig.cache
 C:\Users\이동하\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\ref\Client test.dll
+C:\Users\이동하\Source\Repos\Neural-Words\Client test\bin\Release\net8.0-windows\cc.ko.300.bin
