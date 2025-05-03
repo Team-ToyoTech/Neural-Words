@@ -136,6 +136,7 @@ namespace Client_test
                     }
                     else if (message[0] == "6")
                     {
+                        Invoke(new Action(() => listBox1.Items.Add(message[1])));
                         wordSimilarity = new WordSimilarity(this);
                         wordSimilarity.OnMessageSent += HandleMessage;
                         wordSimilarity.Show();

@@ -19,7 +19,7 @@ namespace Client_test
         public event Action<string> OnMessageSent; // client로 메시지 전송
 
         private FastTextWrapper fastText;
-        private string filePath = Path.Combine(Application.StartupPath, "Client test", "cc.ko.300.bin"); // 모델 경로
+        private string filePath = @"C:\Users\이동하\Source\Repos\Neural-Words\Client test\cc.ko.300.bin"; // FastText 모델 경로
 
         public WordSimilarity(Client Form)
         {

@@ -405,12 +405,27 @@ namespace Server_test
 
         void Game() // 게임 플레이
         {
-            clientScore = Enumerable.Repeat<double>(0, clients.Count).ToArray<double>(); // 점수 배열 0으로 초기화, 크기 할당
+            if (clients.Count > 0)
+            {
+                clientScore = Enumerable.Repeat<double>(0, clients.Count).ToArray<double>();
+            }
+            else
+            {
+                MessageBox.Show("게임을 시작하려면 최소 1명의 클라이언트가 필요합니다.");
+                return;
+            }
 
             foreach (var c in clients)
             {
-                c.Send("6", "");
-                Delay(10);
+                if (c.client.Connected)
+                {
+                    c.Send("6", "Game Started");
+                    Delay(10);
+                }
+                else
+                {
+                    MessageBox.Show($"{c.nickname} 클라이언트가 연결되지 않았습니다.");
+                }
             }
 
             string rndWrd = GetRandomWord(); // 랜덤 단어 가져오기
@@ -422,7 +437,13 @@ namespace Server_test
 
         private string GetRandomWord()
         {
-            string path = Path.Combine(Application.StartupPath, "Server test", "wordList-utf8.txt");
+            string path = @"C:\Users\이동하\Source\Repos\Neural-Words\Server test\wordList-utf8.txt";
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("단어 파일이 존재하지 않습니다. 경로를 확인하세요." + path);
+                return string.Empty;
+            }
+
             string randomWord = RandomWordSelector.GetRandomWord(path);
             return randomWord;
         }
