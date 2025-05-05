@@ -23,7 +23,8 @@ namespace Server_test
             T = new Thread(() => ServerLoop(1111));
             Tt = new List<Thread>();
             button2.Enabled = false;
-            button3.Enabled = false;
+            button5.Enabled = false;
+            button4.Enabled = false;
             isClosing = false;
             label2.Text = "로컬 IP주소:\n" + GetLocalIPAddress() + "\n외부 IP주소:\n" + GetExternalIPAddress();
         }
@@ -38,7 +39,8 @@ namespace Server_test
                 T.Start();
                 button1.Enabled = false;
                 button2.Enabled = true;
-                button3.Enabled = true;
+                button5.Enabled = true;
+                button4.Enabled = false;
                 isServerRun = true;
                 listBox1.Items.Add("Server started");
             }
@@ -49,7 +51,6 @@ namespace Server_test
         }
         /*
         입력 코드
-        0: 채팅
         1: 연결종료
         2: 번호 지정(서버=>클라이언트)
         3: 닉네임 전송(클라이언트=>서버)
@@ -226,6 +227,7 @@ namespace Server_test
                     {
                         clientScore[clientrealnumber] += double.Parse(message[1]);
                         receivedClientCnt++;
+                        Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} Score: " + message[1])));
                         if (receivedClientCnt == clients.Count)
                         {
                             receivedClientCnt = 0;
@@ -244,19 +246,7 @@ namespace Server_test
                     break;
                 }
             }
-            // if (!isClosing && !error)
-            // {
-            //     foreach (var c in clients)
-            //     {
-            //         if (c != clients[clientrealnumber])
-            //         {
-            //             NetworkStream cStream = c.client.GetStream();
-            //             byte[] responseBytes = buffer;
-            //             cStream.Write(Encoding.UTF8.GetBytes($"{clients[clientrealnumber].nickname} disconnected..."));
-            //         }
-            //     }
-            //     Invoke(new Action(() => listBox1.Items.Add($"{clients[clientrealnumber].nickname} disconnected...")));
-            // }
+
             client.client.Close();
             if (!isClosing)
             {
@@ -285,36 +275,12 @@ namespace Server_test
             }
             button2.Enabled = false;
             button1.Enabled = true;
-            button3.Enabled = false;
+            button5.Enabled = false;
+            button4.Enabled = false;
             isServerRun = false;
             listBox1.Items.Add("Server stopped");
             server.Stop();
             listBox2.Items.Clear();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!textBox1.Text.Contains('⧫') && !textBox1.Text.Contains('◊'))
-            {
-                if (textBox1.Text != "")
-                {
-                    foreach (var c in clients)
-                    {
-                        c.client.GetStream().Write(Encoding.UTF8.GetBytes("0⧫" + "Server:" + textBox2.Text + '◊'));
-                    }
-                    listBox1.Items.Add("Server:" + textBox2.Text);
-                    textBox2.Text = "";
-                    listBox1.TopIndex = listBox1.Items.Count - 1;
-                }
-                else
-                {
-                    MessageBox.Show("문자는 공백이면 안됩니다.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("채팅에 다음 문자는 포함되면 안됩니다: ⧫, ◊");
-            }
         }
 
         static string GetLocalIPAddress()
@@ -357,34 +323,6 @@ namespace Server_test
             //     string response = client.DownloadString("https://api.ipify.org");
             //     return response;
             // }
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && isServerRun)
-            {
-                if (!textBox1.Text.Contains('⧫') && !textBox1.Text.Contains('◊'))
-                {
-                    if (textBox1.Text != "")
-                    {
-                        foreach (var c in clients)
-                        {
-                            c.client.GetStream().Write(Encoding.UTF8.GetBytes("0⧫" + "Server:" + textBox2.Text + '◊'));
-                        }
-                        listBox1.Items.Add("Server:" + textBox2.Text);
-                        textBox2.Text = "";
-                        listBox1.TopIndex = listBox1.Items.Count - 1;
-                    }
-                    else
-                    {
-                        MessageBox.Show("문자는 공백이면 안됩니다.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("채팅에 다음 문자는 포함되면 안됩니다: ⧫, ◊");
-                }
-            }
         }
 
         private void button5_Click(object sender, EventArgs e) // 게임 시작
@@ -450,9 +388,11 @@ namespace Server_test
 
         private void button4_Click(object sender, EventArgs e) // 게임 종료
         {
+            button4.Enabled = false; // 게임 종료 버튼 비활성화
+            button5.Enabled = true; // 게임 시작 버튼 활성화
             foreach (var c in clients)
             {
-                c.Send("7", "");
+                c.Send("7", "Game Ended");
                 Delay(10);
             }
         }

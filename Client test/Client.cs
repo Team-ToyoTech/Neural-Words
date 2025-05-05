@@ -18,7 +18,6 @@ namespace Client_test
         {
             InitializeComponent();
             button2.Enabled = false;
-            button3.Enabled = false;
             isconnected = false;
         }
         string wordScore = "";
@@ -34,10 +33,9 @@ namespace Client_test
                     receiveThread = new Thread(ReceiveMessages);
                     receiveThread.IsBackground = true;
                     receiveThread.Start();
-                    listBox1.Items.Add("Connected to server...");
+                    listBox1.Items.Add("Connected to server");
                     isconnected = true;
                     button2.Enabled = true;
-                    button3.Enabled = true;
                     button1.Enabled = false;
                     textBox4.Enabled = false;
                 }
@@ -46,8 +44,8 @@ namespace Client_test
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
+
         private void ReceiveMessages()
         {
             byte[] buffer = new byte[102400];
@@ -80,11 +78,7 @@ namespace Client_test
                     else msg = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Split("◊")[1];
                     string[] message = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Split("◊")[0].Split('⧫');
 
-                    if (message[0] == "0")
-                    {
-                        Invoke(new Action(() => listBox1.Items.Add(message[1])));
-                    }
-                    else if (message[0] == "1")
+                    if (message[0] == "1") // 연결 종료
                     {
 
                         client.Close();
@@ -93,9 +87,8 @@ namespace Client_test
 
                         Invoke(new Action(() =>
                         {
-                            listBox1.Items.Add("Disconnected from server...");
+                            listBox1.Items.Add("Disconnected from server");
                             button2.Enabled = false;
-                            button3.Enabled = false;
                             button1.Enabled = true;
                             isconnected = false;
                             textBox4.Enabled = true;
@@ -104,7 +97,7 @@ namespace Client_test
 
                         break;
                     }
-                    else if (message[0] == "2")
+                    else if (message[0] == "2") // 번호 지정
                     {
                         mynum = int.Parse(message[1]);
                         Invoke(new Action(() => str = textBox4.Text));
@@ -126,28 +119,32 @@ namespace Client_test
                         stream.Write(Encoding.UTF8.GetBytes("3⧫" + nickname + '◊'));
                         stream.Flush();
                     }
-                    else if (message[0] == "4")
+                    else if (message[0] == "4") // 접속 클라이언트 이름
                     {
                         Invoke(new Action(() => listBox2.Items.Add(message[1])));
+                        Invoke(new Action(() => listBox1.Items.Add(message[1] + " connected")));
                     }
-                    else if (message[0] == "5")
+                    else if (message[0] == "5") // 접속 종료 클라이언트 이름
                     {
                         Invoke(new Action(() => listBox2.Items.Remove(message[1])));
+                        Invoke(new Action(() => listBox1.Items.Add(message[1] + " disconnected")));
                     }
-                    else if (message[0] == "6")
+                    else if (message[0] == "6") // 게임 시작
                     {
                         Invoke(new Action(() => listBox1.Items.Add(message[1])));
                         wordSimilarity = new WordSimilarity(this);
                         wordSimilarity.OnMessageSent += HandleMessage;
                         wordSimilarity.Show();
                     }
-                    else if (message[0] == "7")
+                    else if (message[0] == "7") // 게임 종료
                     {
+                        Invoke(new Action(() => listBox1.Items.Add(message[1])));
                         wordSimilarity.Close();
                         wordSimilarity.Dispose();
                     }
                     else if (message[0] == "8") // 단어 받기
                     {
+                        Invoke(new Action(() => listBox1.Items.Add("Received Word: " + message[1])));
                         string getWord = message[1]; // 받은 단어
                         wordSimilarity.ReceiveMessage(getWord);
                     }
@@ -172,9 +169,8 @@ namespace Client_test
             stream.Flush();
             stream.Close();
             client.Close();
-            listBox1.Items.Add("Disconnected from server...");
+            listBox1.Items.Add("Disconnected from server");
             button2.Enabled = false;
-            button3.Enabled = false;
             button1.Enabled = true;
             isconnected = false;
             textBox4.Enabled = true;
@@ -189,61 +185,11 @@ namespace Client_test
                 stream.Flush();
                 stream.Close();
                 client.Close();
-                listBox1.Items.Add("Disconnected from server...");
+                listBox1.Items.Add("Disconnected from server");
                 button2.Enabled = false;
-                button3.Enabled = false;
                 button1.Enabled = true;
                 isconnected = false;
                 textBox4.Enabled = true;
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!textBox1.Text.Contains('⧫') && !textBox1.Text.Contains('◊'))
-            {
-                if (textBox1.Text != "")
-                {
-                    stream.Write(Encoding.UTF8.GetBytes("0⧫" + $"{nickname}:" + textBox1.Text + '◊'));
-                    stream.Flush();
-                    listBox1.Items.Add($"{nickname}:" + textBox1.Text);
-                    textBox1.Text = "";
-                    listBox1.TopIndex = listBox1.Items.Count - 1;
-                }
-                else
-                {
-                    MessageBox.Show("문자는 공백이면 안됩니다.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("채팅에 다음 문자는 포함되면 안됩니다: ⧫, ◊");
-            }
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && isconnected)
-            {
-                if (!textBox1.Text.Contains('⧫') && !textBox1.Text.Contains('◊'))
-                {
-                    if (textBox1.Text != "")
-                    {
-                        stream.Write(Encoding.UTF8.GetBytes("0⧫" + $"{nickname}:" + textBox1.Text + '◊'));
-                        stream.Flush();
-                        listBox1.Items.Add($"{nickname}:" + textBox1.Text);
-                        textBox1.Text = "";
-                        listBox1.TopIndex = listBox1.Items.Count - 1;
-                    }
-                    else
-                    {
-                        MessageBox.Show("문자는 공백이면 안됩니다.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("다음 문자는 포함되어서는 안됩니다: ⧫, ◊");
-                }
             }
         }
 
