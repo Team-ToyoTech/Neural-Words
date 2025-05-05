@@ -1,3 +1,3 @@
 # Neural-Words
 
-![Neural-Words_Logo](https://github.com/user-attachments/assets/e9838509-032b-4f85-b3dc-0a1e9cc8c69f)
+![Neural-Words_Logo](https://github.com/user-attachments/assets/279c1ff7-9778-495b-8946-1601aed4f40c)
