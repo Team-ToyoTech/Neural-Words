@@ -159,7 +159,7 @@ namespace Server_test
                     }
                     else if (message[0] == "1")
                     {
-                        Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} disconnected...")));
+                        Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} disconnected")));
                         Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
                         foreach (var c in clients)
                         {
@@ -167,7 +167,7 @@ namespace Server_test
                             byte[] responseBytes = buffer;
                             if (c != client)
                             {
-                                cStream.Write(Encoding.UTF8.GetBytes($"0⧫{client.nickname} disconnected...◊"));
+                                cStream.Write(Encoding.UTF8.GetBytes($"0⧫{client.nickname} disconnected◊"));
                                 cStream.Flush();
                                 Delay(100);
                                 cStream.Write(Encoding.UTF8.GetBytes($"5⧫{client.nickname}◊"));
@@ -236,6 +236,7 @@ namespace Server_test
                             {
                                 c.Send("8", rndWrd);
                             }
+                            Invoke(new Action(() => listBox1.Items.Add("Sended Word: " + rndWrd)));
                         }
                     }
 
@@ -343,15 +344,7 @@ namespace Server_test
 
         void Game() // 게임 플레이
         {
-            if (clients.Count > 0)
-            {
-                clientScore = Enumerable.Repeat<double>(0, clients.Count).ToArray<double>();
-            }
-            else
-            {
-                MessageBox.Show("게임을 시작하려면 최소 1명의 클라이언트가 필요합니다.");
-                return;
-            }
+            clientScore = Enumerable.Repeat<double>(0, clients.Count).ToArray<double>();
 
             foreach (var c in clients)
             {
@@ -365,17 +358,19 @@ namespace Server_test
                     MessageBox.Show($"{c.nickname} 클라이언트가 연결되지 않았습니다.");
                 }
             }
+            Invoke(new Action(() => listBox1.Items.Add("Game Started")));
 
             string rndWrd = GetRandomWord(); // 랜덤 단어 가져오기
             foreach (var c in clients)
             {
                 c.Send("8", rndWrd);
             }
+            Invoke(new Action(() => listBox1.Items.Add("Sended Word: " + rndWrd)));
         }
 
         private string GetRandomWord()
         {
-            string path = @"C:\Users\이동하\Source\Repos\Neural-Words\Server test\wordList-utf8.txt";
+            string path = @"D:\Source\Repos\Neural-Words\Server test\wordList-utf8.txt";
             if (!File.Exists(path))
             {
                 MessageBox.Show("단어 파일이 존재하지 않습니다. 경로를 확인하세요." + path);

@@ -131,10 +131,30 @@ namespace Client_test
                     }
                     else if (message[0] == "6") // 게임 시작
                     {
-                        Invoke(new Action(() => listBox1.Items.Add(message[1])));
-                        wordSimilarity = new WordSimilarity(this);
-                        wordSimilarity.OnMessageSent += HandleMessage;
-                        wordSimilarity.Show();
+                        //Invoke(new Action(() => listBox1.Items.Add(message[1])));
+                        //wordSimilarity = new WordSimilarity(this);
+                        //wordSimilarity.OnMessageSent += HandleMessage;
+                        //wordSimilarity.Show();
+
+                        Invoke(new Action(() =>
+                        {
+                            try
+                            {
+                                listBox1.Items.Add(message[1]);
+                                wordSimilarity = new WordSimilarity(this);
+                                wordSimilarity.OnMessageSent += HandleMessage;
+                                wordSimilarity.Show();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"게임 시작 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (wordSimilarity != null)
+                                {
+                                    wordSimilarity.Dispose();
+                                    wordSimilarity = null;
+                                }
+                            }
+                        }));
                     }
                     else if (message[0] == "7") // 게임 종료
                     {
@@ -145,8 +165,7 @@ namespace Client_test
                     else if (message[0] == "8") // 단어 받기
                     {
                         Invoke(new Action(() => listBox1.Items.Add("Received Word: " + message[1])));
-                        string getWord = message[1]; // 받은 단어
-                        wordSimilarity.ReceiveMessage(getWord);
+                        wordSimilarity.ReceiveMessage(message[1]);
                     }
 
                     Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
