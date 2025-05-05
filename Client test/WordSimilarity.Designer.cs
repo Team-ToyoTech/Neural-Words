@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WordSimilarity));
             GivenWord = new Label();
             WordInput = new TextBox();
             Score = new Label();
@@ -78,6 +79,7 @@
             Controls.Add(Score);
             Controls.Add(WordInput);
             Controls.Add(GivenWord);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "WordSimilarity";
             Text = "WordSimilarity";
             ResumeLayout(false);
