@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
 
-namespace Server_test
+namespace Server
 {
     public partial class Server : Form
     {
@@ -22,33 +22,34 @@ namespace Server_test
             isServerRun = false;
             T = new Thread(() => ServerLoop(1111));
             Tt = new List<Thread>();
-            button2.Enabled = false;
-            button5.Enabled = false;
-            button4.Enabled = false;
+            ServerStopButton.Enabled = false;
+            GameStartButton.Enabled = false;
+            GameFinishButton.Enabled = false;
             isClosing = false;
-            label2.Text = "로컬 IP주소:\n" + GetLocalIPAddress() + "\n외부 IP주소:\n" + GetExternalIPAddress();
+            IPLabel.Text = "로컬 IP주소:\n" + GetLocalIPAddress() + "\n외부 IP주소:\n" + GetExternalIPAddress();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ServerStartButton_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1.Text, out int port) && 0 < port && port < 100000)
+            if (int.TryParse(PortTextBox.Text, out int port) && 0 < port && port < 100000)
             {
 
                 T = new Thread(() => ServerLoop(port));
                 T.IsBackground = true;
                 T.Start();
-                button1.Enabled = false;
-                button2.Enabled = true;
-                button5.Enabled = true;
-                button4.Enabled = false;
+                ServerStartButton.Enabled = false;
+                ServerStopButton.Enabled = true;
+                GameStartButton.Enabled = true;
+                GameFinishButton.Enabled = false;
                 isServerRun = true;
-                listBox1.Items.Add("Server started");
+                MessageListBox.Items.Add("Server started");
             }
             else
             {
                 MessageBox.Show("포트는 1에서 99999 사이의 정수를 입력해 주세요");
             }
         }
+
         /*
         입력 코드
         1: 연결종료
@@ -77,7 +78,7 @@ namespace Server_test
             return;
         }
 
-        // Thread func
+        // Thread function
         void ServerLoop(int port)
         {
             server = new TcpListener(IPAddress.Any, port);
@@ -91,7 +92,7 @@ namespace Server_test
                 try
                 {
                     clients.Add(new Client(server.AcceptTcpClient(), count));
-                    Invoke(new Action(() => listBox2.Items.Add(clients[clients.Count - 1].nickname)));
+                    Invoke(new Action(() => ConnectedListBox.Items.Add(clients[clients.Count - 1].nickname)));
                     count++;
 
                     Tt.Add(new Thread(() => ClientCheck(clients.Count - 1, count)));
@@ -131,21 +132,31 @@ namespace Server_test
                         byte[] data = new byte[256];
                         int bytesRead = stream.Read(data, 0, data.Length);
                         if (bytesRead == 0)
+                        {
                             break;
+                        }
                         data = data.Where(x => x != 0).ToArray();
                         if (buffer.Length == 102400) buffer = data;
                         else buffer = buffer.Concat(data).ToArray();
 
                         msg = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-                        if (msg.Contains('◊')) break;
+                        if (msg.Contains('◊'))
+                        {
+                            break;
+                        }
                     }
                     if (Encoding.UTF8.GetString(buffer, 0, buffer.Length).Split("◊").Length == 1)
+                    {
                         msg = "";
-                    else msg = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Split("◊")[1];
+                    }
+                    else
+                    {
+                        msg = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Split("◊")[1];
+                    }
                     string[] message = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Split("◊")[0].Split('⧫');
                     if (message[0] == "0")
                     {
-                        Invoke(new Action(() => listBox1.Items.Add(message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add(message[1])));
 
                         foreach (var c in clients)
                         {
@@ -159,8 +170,8 @@ namespace Server_test
                     }
                     else if (message[0] == "1")
                     {
-                        Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} disconnected")));
-                        Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
+                        Invoke(new Action(() => MessageListBox.Items.Add($"{client.nickname} disconnected")));
+                        Invoke(new Action(() => ConnectedListBox.Items.Remove(client.nickname)));
                         foreach (var c in clients)
                         {
                             NetworkStream cStream = c.client.GetStream();
@@ -192,14 +203,14 @@ namespace Server_test
                                 client.Send("1", "닉네임은 다음과 같을 수 없습니다: " + nickname);
                                 // client.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫닉네임은 다음과 같을 수 없습니다:" + nickname + '◊'));
                                 clients.Remove(client);
-                                Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
+                                Invoke(new Action(() => ConnectedListBox.Items.Remove(client.nickname)));
                                 int b = 0;
                                 error = true;
                                 int a = 10 / b;
                             }
                         }
                         clients.Remove(client);
-                        Invoke(new Action(() => listBox2.Items.Remove(client.nickname)));
+                        Invoke(new Action(() => ConnectedListBox.Items.Remove(client.nickname)));
                         client.nickname = message[1];
                         foreach (var c in clients)
                         {
@@ -214,8 +225,8 @@ namespace Server_test
                             c.Send("4", client.nickname);
                             // c.client.GetStream().Write(Encoding.UTF8.GetBytes("4⧫" + client.nickname + '◊'));
                         }
-                        Invoke(new Action(() => listBox2.Items.Add(client.nickname)));
-                        Invoke(new Action(() => listBox1.Items.Add($"{message[1]} joined")));
+                        Invoke(new Action(() => ConnectedListBox.Items.Add(client.nickname)));
+                        Invoke(new Action(() => MessageListBox.Items.Add($"{message[1]} joined")));
                         buffer = Encoding.UTF8.GetBytes($"0⧫{client.nickname} joined◊");
                         foreach (var c in clients)
                         {
@@ -227,7 +238,7 @@ namespace Server_test
                     {
                         clientScore[clientrealnumber] += double.Parse(message[1]);
                         receivedClientCnt++;
-                        Invoke(new Action(() => listBox1.Items.Add($"{client.nickname} Score: " + message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add($"{client.nickname} Score: " + message[1])));
                         if (receivedClientCnt == clients.Count)
                         {
                             receivedClientCnt = 0;
@@ -236,11 +247,11 @@ namespace Server_test
                             {
                                 c.Send("8", rndWrd);
                             }
-                            Invoke(new Action(() => listBox1.Items.Add("Sended Word: " + rndWrd)));
+                            Invoke(new Action(() => MessageListBox.Items.Add("Sended Word: " + rndWrd)));
                         }
                     }
 
-                    Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
+                    Invoke(new Action(() => MessageListBox.TopIndex = MessageListBox.Items.Count - 1));
                 }
                 catch (Exception e)
                 {
@@ -251,12 +262,12 @@ namespace Server_test
             client.client.Close();
             if (!isClosing)
             {
-                Invoke(new Action(() => listBox1.Items.Remove(client.nickname)));
+                Invoke(new Action(() => MessageListBox.Items.Remove(client.nickname)));
                 clients.Remove(client);
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Server_FormClosing(object sender, FormClosingEventArgs e)
         {
             isClosing = true;
             foreach (var c in clients)
@@ -267,21 +278,21 @@ namespace Server_test
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ServerStopButton_Click(object sender, EventArgs e)
         {
             foreach (var c in clients)
             {
                 c.client.GetStream().Write(Encoding.UTF8.GetBytes("1⧫◊"));
                 c.client.Close();
             }
-            button2.Enabled = false;
-            button1.Enabled = true;
-            button5.Enabled = false;
-            button4.Enabled = false;
+            ServerStopButton.Enabled = false;
+            ServerStartButton.Enabled = true;
+            GameStartButton.Enabled = false;
+            GameFinishButton.Enabled = false;
             isServerRun = false;
-            listBox1.Items.Add("Server stopped");
+            MessageListBox.Items.Add("Server stopped");
             server.Stop();
-            listBox2.Items.Clear();
+            ConnectedListBox.Items.Clear();
         }
 
         static string GetLocalIPAddress()
@@ -326,12 +337,12 @@ namespace Server_test
             // }
         }
 
-        private void button5_Click(object sender, EventArgs e) // 게임 시작
+        private void GameStartButton_Click(object sender, EventArgs e) // 게임 시작
         {
             if (clients.Count >= 2)
             {
-                button4.Enabled = true; // 게임 종료 버튼 활성화
-                button5.Enabled = false; // 게임 시작 버튼 비활성화
+                GameFinishButton.Enabled = true; // 게임 종료 버튼 활성화
+                GameStartButton.Enabled = false; // 게임 시작 버튼 비활성화
                 Thread t = new Thread(Game);
                 t.IsBackground = true;
                 t.Start();
@@ -358,14 +369,14 @@ namespace Server_test
                     MessageBox.Show($"{c.nickname} 클라이언트가 연결되지 않았습니다.");
                 }
             }
-            Invoke(new Action(() => listBox1.Items.Add("Game Started")));
+            Invoke(new Action(() => MessageListBox.Items.Add("Game Started")));
 
             string rndWrd = GetRandomWord(); // 랜덤 단어 가져오기
             foreach (var c in clients)
             {
                 c.Send("8", rndWrd);
             }
-            Invoke(new Action(() => listBox1.Items.Add("Sended Word: " + rndWrd)));
+            Invoke(new Action(() => MessageListBox.Items.Add("Sended Word: " + rndWrd)));
         }
 
         private string GetRandomWord()
@@ -381,10 +392,10 @@ namespace Server_test
             return randomWord;
         }
 
-        private void button4_Click(object sender, EventArgs e) // 게임 종료
+        private void GameFinishButton_Click(object sender, EventArgs e) // 게임 종료
         {
-            button4.Enabled = false; // 게임 종료 버튼 비활성화
-            button5.Enabled = true; // 게임 시작 버튼 활성화
+            GameFinishButton.Enabled = false; // 게임 종료 버튼 비활성화
+            GameStartButton.Enabled = true; // 게임 시작 버튼 활성화
             foreach (var c in clients)
             {
                 c.Send("7", "Game Ended");
@@ -392,11 +403,11 @@ namespace Server_test
             }
         }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        private void PortTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1.PerformClick();
+                ServerStartButton.PerformClick();
             }
         }
     }

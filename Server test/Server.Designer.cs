@@ -1,4 +1,4 @@
-﻿namespace Server_test
+﻿namespace Server
 {
     partial class Server
     {
@@ -28,159 +28,159 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            textBox1 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            listBox1 = new ListBox();
-            label2 = new Label();
-            groupBox1 = new GroupBox();
-            listBox2 = new ListBox();
-            button4 = new Button();
-            button5 = new Button();
-            groupBox1.SuspendLayout();
+            PortLabel = new Label();
+            PortTextBox = new TextBox();
+            ServerStartButton = new Button();
+            ServerStopButton = new Button();
+            MessageListBox = new ListBox();
+            IPLabel = new Label();
+            ConnectedGroupBox = new GroupBox();
+            ConnectedListBox = new ListBox();
+            GameFinishButton = new Button();
+            GameStartButton = new Button();
+            ConnectedGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // PortLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(323, 11);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(48, 25);
-            label1.TabIndex = 0;
-            label1.Text = "포트";
+            PortLabel.AutoSize = true;
+            PortLabel.Location = new Point(323, 11);
+            PortLabel.Margin = new Padding(2, 0, 2, 0);
+            PortLabel.Name = "PortLabel";
+            PortLabel.Size = new Size(48, 25);
+            PortLabel.TabIndex = 0;
+            PortLabel.Text = "포트";
             // 
-            // textBox1
+            // PortTextBox
             // 
-            textBox1.Location = new Point(323, 38);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(155, 31);
-            textBox1.TabIndex = 1;
-            textBox1.KeyDown += textBox1_KeyDown;
+            PortTextBox.Location = new Point(323, 38);
+            PortTextBox.Margin = new Padding(2);
+            PortTextBox.Name = "PortTextBox";
+            PortTextBox.Size = new Size(155, 31);
+            PortTextBox.TabIndex = 1;
+            PortTextBox.KeyDown += PortTextBox_KeyDown;
             // 
-            // button1
+            // ServerStartButton
             // 
-            button1.Location = new Point(482, 35);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(154, 36);
-            button1.TabIndex = 2;
-            button1.Text = "서버 시작";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            ServerStartButton.Location = new Point(482, 35);
+            ServerStartButton.Margin = new Padding(2);
+            ServerStartButton.Name = "ServerStartButton";
+            ServerStartButton.Size = new Size(154, 36);
+            ServerStartButton.TabIndex = 2;
+            ServerStartButton.Text = "서버 시작";
+            ServerStartButton.UseVisualStyleBackColor = true;
+            ServerStartButton.Click += ServerStartButton_Click;
             // 
-            // button2
+            // ServerStopButton
             // 
-            button2.Location = new Point(482, 76);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(154, 36);
-            button2.TabIndex = 3;
-            button2.Text = "서버 종료";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            ServerStopButton.Location = new Point(482, 76);
+            ServerStopButton.Margin = new Padding(2);
+            ServerStopButton.Name = "ServerStopButton";
+            ServerStopButton.Size = new Size(154, 36);
+            ServerStopButton.TabIndex = 3;
+            ServerStopButton.Text = "서버 종료";
+            ServerStopButton.UseVisualStyleBackColor = true;
+            ServerStopButton.Click += ServerStopButton_Click;
             // 
-            // listBox1
+            // MessageListBox
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(11, 11);
-            listBox1.Margin = new Padding(2);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(308, 479);
-            listBox1.TabIndex = 4;
+            MessageListBox.FormattingEnabled = true;
+            MessageListBox.ItemHeight = 25;
+            MessageListBox.Location = new Point(11, 11);
+            MessageListBox.Margin = new Padding(2);
+            MessageListBox.Name = "MessageListBox";
+            MessageListBox.Size = new Size(308, 479);
+            MessageListBox.TabIndex = 4;
             // 
-            // label2
+            // IPLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(323, 81);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(109, 100);
-            label2.TabIndex = 7;
-            label2.Text = "로컬 IP주소:\r\n0.0.0.0\r\n외부 IP주소:\r\n0.0.0.0";
+            IPLabel.AutoSize = true;
+            IPLabel.Location = new Point(323, 81);
+            IPLabel.Margin = new Padding(2, 0, 2, 0);
+            IPLabel.Name = "IPLabel";
+            IPLabel.Size = new Size(109, 100);
+            IPLabel.TabIndex = 7;
+            IPLabel.Text = "로컬 IP주소:\r\n0.0.0.0\r\n외부 IP주소:\r\n0.0.0.0";
             // 
-            // groupBox1
+            // ConnectedGroupBox
             // 
-            groupBox1.Controls.Add(listBox2);
-            groupBox1.Location = new Point(328, 184);
-            groupBox1.Margin = new Padding(2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(308, 306);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "접속자";
+            ConnectedGroupBox.Controls.Add(ConnectedListBox);
+            ConnectedGroupBox.Location = new Point(328, 184);
+            ConnectedGroupBox.Margin = new Padding(2);
+            ConnectedGroupBox.Name = "ConnectedGroupBox";
+            ConnectedGroupBox.Padding = new Padding(2);
+            ConnectedGroupBox.Size = new Size(308, 306);
+            ConnectedGroupBox.TabIndex = 8;
+            ConnectedGroupBox.TabStop = false;
+            ConnectedGroupBox.Text = "접속자";
             // 
-            // listBox2
+            // ConnectedListBox
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 25;
-            listBox2.Location = new Point(5, 33);
-            listBox2.Margin = new Padding(2);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(299, 254);
-            listBox2.TabIndex = 0;
+            ConnectedListBox.FormattingEnabled = true;
+            ConnectedListBox.ItemHeight = 25;
+            ConnectedListBox.Location = new Point(5, 33);
+            ConnectedListBox.Margin = new Padding(2);
+            ConnectedListBox.Name = "ConnectedListBox";
+            ConnectedListBox.Size = new Size(299, 254);
+            ConnectedListBox.TabIndex = 0;
             // 
-            // button4
+            // GameFinishButton
             // 
-            button4.Location = new Point(482, 156);
-            button4.Margin = new Padding(2);
-            button4.Name = "button4";
-            button4.Size = new Size(154, 36);
-            button4.TabIndex = 9;
-            button4.Text = "게임 종료";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            GameFinishButton.Location = new Point(482, 156);
+            GameFinishButton.Margin = new Padding(2);
+            GameFinishButton.Name = "GameFinishButton";
+            GameFinishButton.Size = new Size(154, 36);
+            GameFinishButton.TabIndex = 9;
+            GameFinishButton.Text = "게임 종료";
+            GameFinishButton.UseVisualStyleBackColor = true;
+            GameFinishButton.Click += GameFinishButton_Click;
             // 
-            // button5
+            // GameStartButton
             // 
-            button5.Location = new Point(482, 116);
-            button5.Margin = new Padding(2);
-            button5.Name = "button5";
-            button5.Size = new Size(154, 36);
-            button5.TabIndex = 10;
-            button5.Text = "게임 시작";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            GameStartButton.Location = new Point(482, 116);
+            GameStartButton.Margin = new Padding(2);
+            GameStartButton.Name = "GameStartButton";
+            GameStartButton.Size = new Size(154, 36);
+            GameStartButton.TabIndex = 10;
+            GameStartButton.Text = "게임 시작";
+            GameStartButton.UseVisualStyleBackColor = true;
+            GameStartButton.Click += GameStartButton_Click;
             // 
             // Server
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(647, 501);
-            Controls.Add(button5);
-            Controls.Add(listBox1);
-            Controls.Add(button4);
-            Controls.Add(groupBox1);
-            Controls.Add(label2);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
-            Controls.Add(label1);
+            Controls.Add(GameStartButton);
+            Controls.Add(MessageListBox);
+            Controls.Add(GameFinishButton);
+            Controls.Add(ConnectedGroupBox);
+            Controls.Add(IPLabel);
+            Controls.Add(ServerStopButton);
+            Controls.Add(ServerStartButton);
+            Controls.Add(PortTextBox);
+            Controls.Add(PortLabel);
             KeyPreview = true;
             Margin = new Padding(2);
             Name = "Server";
             Text = "Chat Server";
-            FormClosing += Form1_FormClosing;
-            groupBox1.ResumeLayout(false);
+            FormClosing += Server_FormClosing;
+            ConnectedGroupBox.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private TextBox textBox1;
-        private Button button1;
-        private Button button2;
-        private ListBox listBox1;
-        private Label label2;
-        private GroupBox groupBox1;
-        private ListBox listBox2;
-        private Button button4;
-        private Button button5;
+        private Label PortLabel;
+        private TextBox PortTextBox;
+        private Button ServerStartButton;
+        private Button ServerStopButton;
+        private ListBox MessageListBox;
+        private Label IPLabel;
+        private GroupBox ConnectedGroupBox;
+        private ListBox ConnectedListBox;
+        private Button GameFinishButton;
+        private Button GameStartButton;
     }
 }

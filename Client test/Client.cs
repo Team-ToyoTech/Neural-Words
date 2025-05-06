@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace Client_test
+namespace Client
 {
     public partial class Client : Form
     {
@@ -14,30 +14,30 @@ namespace Client_test
         bool isconnected;
         string nickname;
         static string str;
+
         public Client()
         {
             InitializeComponent();
-            button2.Enabled = false;
+            DisconnectButton.Enabled = false;
             isconnected = false;
         }
-        string wordScore = "";
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ConnectButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (int.TryParse(textBox3.Text, out int port))
+                if (int.TryParse(PortTextBox.Text, out int port))
                 {
-                    client = new TcpClient(textBox2.Text, port);
+                    client = new TcpClient(IPTextBox.Text, port);
                     stream = client.GetStream();
                     receiveThread = new Thread(ReceiveMessages);
                     receiveThread.IsBackground = true;
                     receiveThread.Start();
-                    listBox1.Items.Add("Connected to server");
+                    MessageListBox.Items.Add("Connected to server");
                     isconnected = true;
-                    button2.Enabled = true;
-                    button1.Enabled = false;
-                    textBox4.Enabled = false;
+                    DisconnectButton.Enabled = true;
+                    ConnectButton.Enabled = false;
+                    NicknameTextBox.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -87,12 +87,12 @@ namespace Client_test
 
                         Invoke(new Action(() =>
                         {
-                            listBox1.Items.Add("Disconnected from server");
-                            button2.Enabled = false;
-                            button1.Enabled = true;
+                            MessageListBox.Items.Add("Disconnected from server");
+                            DisconnectButton.Enabled = false;
+                            ConnectButton.Enabled = true;
                             isconnected = false;
-                            textBox4.Enabled = true;
-                            listBox2.Items.Clear();
+                            NicknameTextBox.Enabled = true;
+                            ConnectedListBox.Items.Clear();
                         }));
 
                         break;
@@ -100,11 +100,11 @@ namespace Client_test
                     else if (message[0] == "2") // 번호 지정
                     {
                         mynum = int.Parse(message[1]);
-                        Invoke(new Action(() => str = textBox4.Text));
+                        Invoke(new Action(() => str = NicknameTextBox.Text));
                         if (str == "")
                         {
                             nickname = "Client" + mynum.ToString();
-                            Invoke(new Action(() => textBox4.Text = nickname));
+                            Invoke(new Action(() => NicknameTextBox.Text = nickname));
                         }
                         else if (!str.Contains('⧫'))
                         {
@@ -114,20 +114,20 @@ namespace Client_test
                         {
                             MessageBox.Show("이름에 다음 문자가 포함되어서는 안됩니다: ⧫\n기본 이름으로 진행합니다.");
                             nickname = "Client" + mynum.ToString();
-                            Invoke(new Action(() => textBox4.Text = nickname));
+                            Invoke(new Action(() => NicknameTextBox.Text = nickname));
                         }
                         stream.Write(Encoding.UTF8.GetBytes("3⧫" + nickname + '◊'));
                         stream.Flush();
                     }
                     else if (message[0] == "4") // 접속 클라이언트 이름
                     {
-                        Invoke(new Action(() => listBox2.Items.Add(message[1])));
-                        Invoke(new Action(() => listBox1.Items.Add(message[1] + " connected")));
+                        Invoke(new Action(() => ConnectedListBox.Items.Add(message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add(message[1] + " connected")));
                     }
                     else if (message[0] == "5") // 접속 종료 클라이언트 이름
                     {
-                        Invoke(new Action(() => listBox2.Items.Remove(message[1])));
-                        Invoke(new Action(() => listBox1.Items.Add(message[1] + " disconnected")));
+                        Invoke(new Action(() => ConnectedListBox.Items.Remove(message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add(message[1] + " disconnected")));
                     }
                     else if (message[0] == "6") // 게임 시작
                     {
@@ -140,8 +140,8 @@ namespace Client_test
                         {
                             try
                             {
-                                listBox1.Items.Add(message[1]);
-                                wordSimilarity = new WordSimilarity(this);
+                                MessageListBox.Items.Add(message[1]);
+                                wordSimilarity = new WordSimilarity();
                                 wordSimilarity.OnMessageSent += HandleMessage;
                                 wordSimilarity.Show();
                             }
@@ -158,17 +158,17 @@ namespace Client_test
                     }
                     else if (message[0] == "7") // 게임 종료
                     {
-                        Invoke(new Action(() => listBox1.Items.Add(message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add(message[1])));
                         wordSimilarity.Close();
                         wordSimilarity.Dispose();
                     }
                     else if (message[0] == "8") // 단어 받기
                     {
-                        Invoke(new Action(() => listBox1.Items.Add("Received Word: " + message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add("Received Word: " + message[1])));
                         wordSimilarity.ReceiveMessage(message[1]);
                     }
 
-                    Invoke(new Action(() => listBox1.TopIndex = listBox1.Items.Count - 1));
+                    Invoke(new Action(() => MessageListBox.TopIndex = MessageListBox.Items.Count - 1));
                 }
                 catch (Exception ex)
                 {
@@ -177,26 +177,26 @@ namespace Client_test
             }
         }
 
-        private void HandleMessage(string message) // word similarity 메시지 받아서 server로 전송
+        private void HandleMessage(string message) // word similarity 점수 메시지 받아서 server로 전송
         {
             stream.Write(Encoding.UTF8.GetBytes("9⧫" + message + "◊"));
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void DisconnectButton_Click(object sender, EventArgs e)
         {
             stream.Write(Encoding.UTF8.GetBytes("1⧫◊"));
             stream.Flush();
             stream.Close();
             client.Close();
-            listBox1.Items.Add("Disconnected from server");
-            button2.Enabled = false;
-            button1.Enabled = true;
+            MessageListBox.Items.Add("Disconnected from server");
+            DisconnectButton.Enabled = false;
+            ConnectButton.Enabled = true;
             isconnected = false;
-            textBox4.Enabled = true;
-            listBox2.Items.Clear();
+            NicknameTextBox.Enabled = true;
+            ConnectedListBox.Items.Clear();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Client_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isconnected)
             {
@@ -204,19 +204,19 @@ namespace Client_test
                 stream.Flush();
                 stream.Close();
                 client.Close();
-                listBox1.Items.Add("Disconnected from server");
-                button2.Enabled = false;
-                button1.Enabled = true;
+                MessageListBox.Items.Add("Disconnected from server");
+                DisconnectButton.Enabled = false;
+                ConnectButton.Enabled = true;
                 isconnected = false;
-                textBox4.Enabled = true;
+                NicknameTextBox.Enabled = true;
             }
         }
 
-        private void textBox4_KeyDown(object sender, KeyEventArgs e)
+        private void NicknameTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1.PerformClick();
+                ConnectButton.PerformClick();
             }
         }
     }

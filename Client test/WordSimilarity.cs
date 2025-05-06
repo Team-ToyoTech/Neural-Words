@@ -12,7 +12,7 @@ using FastText.NetWrapper;
 using static System.Formats.Asn1.AsnWriter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Client_test
+namespace Client
 {
     public partial class WordSimilarity : Form
     {
@@ -21,7 +21,7 @@ namespace Client_test
         private FastTextWrapper fastText;
         private string filePath = @"D:\Source\Repos\Neural-Words\Client test\cc.ko.300.bin"; // FastText 모델 경로
 
-        public WordSimilarity(Client Form)
+        public WordSimilarity()
         {
             InitializeComponent();
             fastText = new FastTextWrapper();
@@ -38,6 +38,12 @@ namespace Client_test
 
         private void Submit_Click(object sender, EventArgs e)
         {
+            if (WordInput.Text == "" || WordInput.Text == GivenWord.Text)
+            {
+                MessageBox.Show("단어가 올바르지 않습니다.");
+                return;
+            }
+
             var vector = fastText.GetWordVector(WordInput.Text);
             var givenVector = fastText.GetWordVector(GivenWord.Text);
 

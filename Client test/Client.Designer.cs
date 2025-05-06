@@ -1,4 +1,4 @@
-﻿namespace Client_test
+﻿namespace Client
 {
     partial class Client
     {
@@ -29,167 +29,167 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Client));
-            listBox1 = new ListBox();
-            button1 = new Button();
-            button2 = new Button();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox3 = new TextBox();
-            label3 = new Label();
-            textBox4 = new TextBox();
-            groupBox1 = new GroupBox();
-            listBox2 = new ListBox();
-            groupBox1.SuspendLayout();
+            MessageListBox = new ListBox();
+            ConnectButton = new Button();
+            DisconnectButton = new Button();
+            IPLabel = new Label();
+            IPTextBox = new TextBox();
+            PortLabel = new Label();
+            PortTextBox = new TextBox();
+            NicknameLabel = new Label();
+            NicknameTextBox = new TextBox();
+            ConnectedGroupBox = new GroupBox();
+            ConnectedListBox = new ListBox();
+            ConnectedGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // listBox1
+            // MessageListBox
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(9, 9);
-            listBox1.Margin = new Padding(2);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(313, 554);
-            listBox1.TabIndex = 0;
+            MessageListBox.FormattingEnabled = true;
+            MessageListBox.ItemHeight = 25;
+            MessageListBox.Location = new Point(9, 9);
+            MessageListBox.Margin = new Padding(2);
+            MessageListBox.Name = "MessageListBox";
+            MessageListBox.Size = new Size(313, 554);
+            MessageListBox.TabIndex = 0;
             // 
-            // button1
+            // ConnectButton
             // 
-            button1.Location = new Point(485, 34);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(154, 36);
-            button1.TabIndex = 1;
-            button1.Text = "연결";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            ConnectButton.Location = new Point(485, 34);
+            ConnectButton.Margin = new Padding(2);
+            ConnectButton.Name = "ConnectButton";
+            ConnectButton.Size = new Size(154, 36);
+            ConnectButton.TabIndex = 1;
+            ConnectButton.Text = "연결";
+            ConnectButton.UseVisualStyleBackColor = true;
+            ConnectButton.Click += ConnectButton_Click;
             // 
-            // button2
+            // DisconnectButton
             // 
-            button2.Location = new Point(485, 94);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(154, 36);
-            button2.TabIndex = 2;
-            button2.Text = "연결 해제";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            DisconnectButton.Location = new Point(485, 94);
+            DisconnectButton.Margin = new Padding(2);
+            DisconnectButton.Name = "DisconnectButton";
+            DisconnectButton.Size = new Size(154, 36);
+            DisconnectButton.TabIndex = 2;
+            DisconnectButton.Text = "연결 해제";
+            DisconnectButton.UseVisualStyleBackColor = true;
+            DisconnectButton.Click += DisconnectButton_Click;
             // 
-            // label1
+            // IPLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(326, 9);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(63, 25);
-            label1.TabIndex = 4;
-            label1.Text = "IP주소";
+            IPLabel.AutoSize = true;
+            IPLabel.Location = new Point(326, 9);
+            IPLabel.Margin = new Padding(2, 0, 2, 0);
+            IPLabel.Name = "IPLabel";
+            IPLabel.Size = new Size(63, 25);
+            IPLabel.TabIndex = 4;
+            IPLabel.Text = "IP주소";
             // 
-            // textBox2
+            // IPTextBox
             // 
-            textBox2.Location = new Point(326, 37);
-            textBox2.Margin = new Padding(2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(155, 31);
-            textBox2.TabIndex = 5;
+            IPTextBox.Location = new Point(326, 37);
+            IPTextBox.Margin = new Padding(2);
+            IPTextBox.Name = "IPTextBox";
+            IPTextBox.Size = new Size(155, 31);
+            IPTextBox.TabIndex = 5;
             // 
-            // label2
+            // PortLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(326, 70);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(48, 25);
-            label2.TabIndex = 6;
-            label2.Text = "포트";
+            PortLabel.AutoSize = true;
+            PortLabel.Location = new Point(326, 70);
+            PortLabel.Margin = new Padding(2, 0, 2, 0);
+            PortLabel.Name = "PortLabel";
+            PortLabel.Size = new Size(48, 25);
+            PortLabel.TabIndex = 6;
+            PortLabel.Text = "포트";
             // 
-            // textBox3
+            // PortTextBox
             // 
-            textBox3.Location = new Point(326, 97);
-            textBox3.Margin = new Padding(2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(155, 31);
-            textBox3.TabIndex = 7;
+            PortTextBox.Location = new Point(326, 97);
+            PortTextBox.Margin = new Padding(2);
+            PortTextBox.Name = "PortTextBox";
+            PortTextBox.Size = new Size(155, 31);
+            PortTextBox.TabIndex = 7;
             // 
-            // label3
+            // NicknameLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(326, 130);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(66, 25);
-            label3.TabIndex = 9;
-            label3.Text = "닉네임";
+            NicknameLabel.AutoSize = true;
+            NicknameLabel.Location = new Point(326, 130);
+            NicknameLabel.Margin = new Padding(2, 0, 2, 0);
+            NicknameLabel.Name = "NicknameLabel";
+            NicknameLabel.Size = new Size(66, 25);
+            NicknameLabel.TabIndex = 9;
+            NicknameLabel.Text = "닉네임";
             // 
-            // textBox4
+            // NicknameTextBox
             // 
-            textBox4.Location = new Point(326, 157);
-            textBox4.Margin = new Padding(2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(155, 31);
-            textBox4.TabIndex = 10;
-            textBox4.KeyDown += textBox4_KeyDown;
+            NicknameTextBox.Location = new Point(326, 157);
+            NicknameTextBox.Margin = new Padding(2);
+            NicknameTextBox.Name = "NicknameTextBox";
+            NicknameTextBox.Size = new Size(155, 31);
+            NicknameTextBox.TabIndex = 10;
+            NicknameTextBox.KeyDown += NicknameTextBox_KeyDown;
             // 
-            // groupBox1
+            // ConnectedGroupBox
             // 
-            groupBox1.Controls.Add(listBox2);
-            groupBox1.Location = new Point(326, 192);
-            groupBox1.Margin = new Padding(2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(312, 371);
-            groupBox1.TabIndex = 11;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "접속자";
+            ConnectedGroupBox.Controls.Add(ConnectedListBox);
+            ConnectedGroupBox.Location = new Point(326, 192);
+            ConnectedGroupBox.Margin = new Padding(2);
+            ConnectedGroupBox.Name = "ConnectedGroupBox";
+            ConnectedGroupBox.Padding = new Padding(2);
+            ConnectedGroupBox.Size = new Size(312, 371);
+            ConnectedGroupBox.TabIndex = 11;
+            ConnectedGroupBox.TabStop = false;
+            ConnectedGroupBox.Text = "접속자";
             // 
-            // listBox2
+            // ConnectedListBox
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 25;
-            listBox2.Location = new Point(5, 30);
-            listBox2.Margin = new Padding(2);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(304, 329);
-            listBox2.TabIndex = 0;
+            ConnectedListBox.FormattingEnabled = true;
+            ConnectedListBox.ItemHeight = 25;
+            ConnectedListBox.Location = new Point(5, 30);
+            ConnectedListBox.Margin = new Padding(2);
+            ConnectedListBox.Name = "ConnectedListBox";
+            ConnectedListBox.Size = new Size(304, 329);
+            ConnectedListBox.TabIndex = 0;
             // 
             // Client
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(647, 572);
-            Controls.Add(groupBox1);
-            Controls.Add(listBox1);
-            Controls.Add(textBox4);
-            Controls.Add(label3);
-            Controls.Add(textBox3);
-            Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(label1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(ConnectedGroupBox);
+            Controls.Add(MessageListBox);
+            Controls.Add(NicknameTextBox);
+            Controls.Add(NicknameLabel);
+            Controls.Add(PortTextBox);
+            Controls.Add(PortLabel);
+            Controls.Add(IPTextBox);
+            Controls.Add(IPLabel);
+            Controls.Add(DisconnectButton);
+            Controls.Add(ConnectButton);
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Margin = new Padding(2);
             Name = "Client";
-            Text = "Chat Client";
-            FormClosing += Form1_FormClosing;
-            groupBox1.ResumeLayout(false);
+            Text = "Client";
+            FormClosing += Client_FormClosing;
+            ConnectedGroupBox.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ListBox listBox1;
-        private Button button1;
-        private Button button2;
-        private Label label1;
-        private TextBox textBox2;
-        private Label label2;
-        private TextBox textBox3;
-        private Label label3;
-        private TextBox textBox4;
-        private GroupBox groupBox1;
-        private ListBox listBox2;
+        private ListBox MessageListBox;
+        private Button ConnectButton;
+        private Button DisconnectButton;
+        private Label IPLabel;
+        private TextBox IPTextBox;
+        private Label PortLabel;
+        private TextBox PortTextBox;
+        private Label NicknameLabel;
+        private TextBox NicknameTextBox;
+        private GroupBox ConnectedGroupBox;
+        private ListBox ConnectedListBox;
     }
 }
