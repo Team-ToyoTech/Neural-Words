@@ -14,6 +14,7 @@ namespace Server
         static bool isServerRun;
         static bool isClosing;
         double[] clientScore;
+        int receivedClientCnt = 0;
 
         public Server()
         {
@@ -117,7 +118,6 @@ namespace Server
             buffer[102399] = 255;
             bool error = false;
             string msg = "";
-            int receivedClientCnt = 0;
             while (isServerRun)
             {
                 try
@@ -234,11 +234,11 @@ namespace Server
                             s.Write(buffer, 0, buffer.Length);
                         }
                     }
-                    else if (message[0] == "9")
+                    else if (message[0] == "9") // 점수 전송
                     {
                         clientScore[clientrealnumber] += double.Parse(message[1]);
                         receivedClientCnt++;
-                        Invoke(new Action(() => MessageListBox.Items.Add($"{client.nickname} Score: " + message[1])));
+                        Invoke(new Action(() => MessageListBox.Items.Add($"{client.nickname} Score: " + message[1] + $", {receivedClientCnt}")));
                         if (receivedClientCnt == clients.Count)
                         {
                             receivedClientCnt = 0;
@@ -345,6 +345,7 @@ namespace Server
                 GameStartButton.Enabled = false; // 게임 시작 버튼 비활성화
                 Thread t = new Thread(Game);
                 t.IsBackground = true;
+                receivedClientCnt = 0;
                 t.Start();
             }
             else
@@ -401,6 +402,7 @@ namespace Server
                 c.Send("7", "Game Ended");
                 Delay(10);
             }
+            Invoke(new Action(() => MessageListBox.Items.Add("Game Ended")));
         }
 
         private void PortTextBox_KeyDown(object sender, KeyEventArgs e)

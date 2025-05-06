@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Source\\Repos\\Neural-Words\\Server test\\Server test.csproj",
-      "projectName": "Server test",
-      "projectPath": "D:\\Source\\Repos\\Neural-Words\\Server test\\Server test.csproj",
+      "projectUniqueName": "D:\\Source\\Repos\\Neural-Words\\Server test\\Server.csproj",
+      "projectName": "Server",
+      "projectPath": "D:\\Source\\Repos\\Neural-Words\\Server test\\Server.csproj",
       "packagesPath": "C:\\Users\\이동하\\.nuget\\packages\\",
       "outputPath": "D:\\Source\\Repos\\Neural-Words\\Server test\\obj\\",
       "projectStyle": "PackageReference",

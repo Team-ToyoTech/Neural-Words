@@ -68,3 +68,5 @@ D:\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\refint\Clien
 D:\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.pdb
 D:\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client test.genruntimeconfig.cache
 D:\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\ref\Client test.dll
+D:\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client.Client.resources
+D:\Source\Repos\Neural-Words\Client test\obj\Release\net8.0-windows\Client.WordSimilarity.resources

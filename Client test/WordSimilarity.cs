@@ -18,14 +18,17 @@ namespace Client
     {
         public event Action<string> OnMessageSent; // client로 메시지 전송
 
-        private FastTextWrapper fastText;
-        private string filePath = @"D:\Source\Repos\Neural-Words\Client test\cc.ko.300.bin"; // FastText 모델 경로
+        private int remainingTime;  // 남은 시간(초)
+        private int totalTime = 15; // 총 시간(초)
 
-        public WordSimilarity()
+        Client client;
+
+        public WordSimilarity(Client client)
         {
             InitializeComponent();
-            fastText = new FastTextWrapper();
-            fastText.LoadModel(filePath);
+            TimeProgressBar.Maximum = totalTime;
+            TimeProgressBar.Value = totalTime;
+            this.client = client;
         }
 
         private void WordInput_KeyDown(object sender, KeyEventArgs e)
@@ -44,8 +47,10 @@ namespace Client
                 return;
             }
 
-            var vector = fastText.GetWordVector(WordInput.Text);
-            var givenVector = fastText.GetWordVector(GivenWord.Text);
+            Timer.Stop(); // 타이머 정지
+
+            var vector = client.fastText.GetWordVector(WordInput.Text);
+            var givenVector = client.fastText.GetWordVector(GivenWord.Text);
 
             double norm = 0, givenNorm = 0;
             double dot = 0;
@@ -78,6 +83,26 @@ namespace Client
         public void ReceiveMessage(string message) // Client에서 단어 받기
         {
             GivenWord.Text = message; // 단어 표시
+            remainingTime = totalTime;
+            TimeProgressBar.Value = totalTime;
+            remainingTime = totalTime; // 남은 시간 초기화
+            Timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            remainingTime--;
+
+            if (remainingTime >= 0)
+            {
+                TimeProgressBar.Value = remainingTime;
+                TimeLabel.Text = "남은 시간: " + remainingTime.ToString() + "초";
+            }
+            else
+            {
+                Timer.Stop();
+                MessageBox.Show("시간 종료");
+            }
         }
     }
 }

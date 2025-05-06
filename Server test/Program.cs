@@ -1,4 +1,4 @@
-namespace Server_test
+namespace Server
 {
     internal static class Program
     {

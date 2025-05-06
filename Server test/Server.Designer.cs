@@ -163,7 +163,7 @@
             KeyPreview = true;
             Margin = new Padding(2);
             Name = "Server";
-            Text = "Chat Server";
+            Text = "Server";
             FormClosing += Server_FormClosing;
             ConnectedGroupBox.ResumeLayout(false);
             ResumeLayout(false);

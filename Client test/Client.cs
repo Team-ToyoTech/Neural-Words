@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using FastText.NetWrapper;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
@@ -15,9 +16,14 @@ namespace Client
         string nickname;
         static string str;
 
+        internal FastTextWrapper fastText;
+        internal string filePath = @"D:\Source\Repos\Neural-Words\Client test\cc.ko.300.bin"; // FastText 모델 경로
+
         public Client()
         {
             InitializeComponent();
+            fastText = new FastTextWrapper();
+            fastText.LoadModel(filePath);
             DisconnectButton.Enabled = false;
             isconnected = false;
         }
@@ -141,7 +147,7 @@ namespace Client
                             try
                             {
                                 MessageListBox.Items.Add(message[1]);
-                                wordSimilarity = new WordSimilarity();
+                                wordSimilarity = new WordSimilarity(this);
                                 wordSimilarity.OnMessageSent += HandleMessage;
                                 wordSimilarity.Show();
                             }

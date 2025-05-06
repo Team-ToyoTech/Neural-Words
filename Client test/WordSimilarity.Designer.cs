@@ -34,9 +34,9 @@
             WordInput = new TextBox();
             Score = new Label();
             Submit = new Button();
-            timer1 = new System.Windows.Forms.Timer(components);
-            progressBar1 = new ProgressBar();
-            label1 = new Label();
+            Timer = new System.Windows.Forms.Timer(components);
+            TimeProgressBar = new ProgressBar();
+            TimeLabel = new Label();
             SuspendLayout();
             // 
             // GivenWord
@@ -78,30 +78,36 @@
             Submit.UseVisualStyleBackColor = true;
             Submit.Click += Submit_Click;
             // 
-            // progressBar1
+            // Timer
             // 
-            progressBar1.Location = new Point(12, 277);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(436, 19);
-            progressBar1.TabIndex = 4;
+            Timer.Enabled = true;
+            Timer.Interval = 1000;
+            Timer.Tick += Timer_Tick;
             // 
-            // label1
+            // TimeProgressBar
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("맑은 고딕", 12F);
-            label1.Location = new Point(12, 242);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 32);
-            label1.TabIndex = 5;
-            label1.Text = "Time:";
+            TimeProgressBar.Location = new Point(12, 277);
+            TimeProgressBar.Name = "TimeProgressBar";
+            TimeProgressBar.Size = new Size(436, 19);
+            TimeProgressBar.TabIndex = 4;
+            // 
+            // TimeLabel
+            // 
+            TimeLabel.AutoSize = true;
+            TimeLabel.Font = new Font("맑은 고딕", 12F);
+            TimeLabel.Location = new Point(12, 242);
+            TimeLabel.Name = "TimeLabel";
+            TimeLabel.Size = new Size(72, 32);
+            TimeLabel.TabIndex = 5;
+            TimeLabel.Text = "Time:";
             // 
             // WordSimilarity
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(460, 308);
-            Controls.Add(label1);
-            Controls.Add(progressBar1);
+            Controls.Add(TimeLabel);
+            Controls.Add(TimeProgressBar);
             Controls.Add(Submit);
             Controls.Add(Score);
             Controls.Add(WordInput);
@@ -119,8 +125,8 @@
         private TextBox WordInput;
         private Label Score;
         private Button Submit;
-        private System.Windows.Forms.Timer timer1;
-        private ProgressBar progressBar1;
-        private Label label1;
+        private System.Windows.Forms.Timer Timer;
+        private ProgressBar TimeProgressBar;
+        private Label TimeLabel;
     }
 }
