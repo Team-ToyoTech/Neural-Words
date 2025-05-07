@@ -49,23 +49,7 @@ namespace Client
 
             Timer.Stop(); // 타이머 정지
 
-            var vector = client.fastText.GetWordVector(WordInput.Text);
-            var givenVector = client.fastText.GetWordVector(GivenWord.Text);
-
-            double norm = 0, givenNorm = 0;
-            double dot = 0;
-            double score = 0;
-            for (int i = 0; i < vector.Length; i++)
-            {
-                dot += vector[i] * givenVector[i];
-                norm += vector[i] * vector[i];
-                givenNorm += givenVector[i] * givenVector[i];
-            }
-            score = (dot / Math.Sqrt(norm * givenNorm) + 1) / 2 * 100; // 점수 계산
-            Score.Text = score.ToString("F1") + "%"; // 점수 출력
-
-            string message = score.ToString("F1");
-            OnMessageSent?.Invoke(message); // Client로 점수 전송
+            OnMessageSent?.Invoke(WordInput.Text); // Client로 단어 전송
 
             // 벡터 내용 확인 (모두 출력)
             // label1.Text = vector.Length.ToString() + " " + givenVector.Length.ToString() + "\n";

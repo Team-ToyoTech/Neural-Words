@@ -1,17 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NcLnVsEUpTA=",
+  "dgSpecHash": "ORfYnKFGzqM=",
   "success": true,
   "projectFilePath": "D:\\Source\\Repos\\Neural-Words\\Client test\\Client.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\이동하\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\fasttext.native.linux\\1.0.115\\fasttext.native.linux.1.0.115.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\fasttext.native.macos\\1.0.115\\fasttext.native.macos.1.0.115.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\fasttext.native.windows\\1.0.115\\fasttext.native.windows.1.0.115.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\fasttext.netwrapper\\1.3.1\\fasttext.netwrapper.1.3.1.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\이동하\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

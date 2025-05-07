@@ -2,6 +2,8 @@
 using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
+using FastText.NetWrapper;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Server
 {
@@ -15,6 +17,10 @@ namespace Server
         static bool isClosing;
         double[] clientScore;
         int receivedClientCnt = 0;
+        string givenWord = "";
+
+        FastTextWrapper fastText;
+        string filePath = @"D:\Source\Repos\Neural-Words\Client test\cc.ko.300.bin"; // FastText 모델 경로
 
         public Server()
         {
@@ -30,6 +36,9 @@ namespace Server
             TimeLimitSetButton.Enabled = false;
             isClosing = false;
             IPLabel.Text = "로컬 IP주소:\n" + GetLocalIPAddress() + "\n외부 IP주소:\n" + GetExternalIPAddress();
+
+            fastText = new FastTextWrapper();
+            fastText.LoadModel(filePath);
         }
 
         private void ServerStartButton_Click(object sender, EventArgs e)
@@ -63,7 +72,7 @@ namespace Server
         6: 게임 시작
         7: 게임 종료
         8: 단어 전송
-        9: 단어 점수 전송
+        9: 입력 단어 전송 받기
         10: 시간 제한 전송
          */
         // Split 문자 : ⧫
@@ -237,20 +246,34 @@ namespace Server
                             s.Write(buffer, 0, buffer.Length);
                         }
                     }
-                    else if (message[0] == "9") // 점수 전송
+                    else if (message[0] == "9") // 단어 전송 받기
                     {
-                        clientScore[clientrealnumber] += double.Parse(message[1]);
+                        var vector = fastText.GetWordVector(message[1]);
+                        var givenVector = fastText.GetWordVector(givenWord);
+
+                        double norm = 0, givenNorm = 0;
+                        double dot = 0;
+                        double score = 0;
+                        for (int i = 0; i < vector.Length; i++)
+                        {
+                            dot += vector[i] * givenVector[i];
+                            norm += vector[i] * vector[i];
+                            givenNorm += givenVector[i] * givenVector[i];
+                        }
+                        score = (dot / Math.Sqrt(norm * givenNorm) + 1) / 2 * 100; // 점수 계산
+
+                        // clientScore[clientrealnumber] += score; 
                         receivedClientCnt++;
-                        Invoke(new Action(() => MessageListBox.Items.Add($"{client.nickname} Score: " + message[1] + $", {receivedClientCnt}")));
+                        Invoke(new Action(() => MessageListBox.Items.Add($"{receivedClientCnt}. {client.nickname} Word: {message[1]}, Score: " + score.ToString("F1"))));
                         if (receivedClientCnt == clients.Count)
                         {
                             receivedClientCnt = 0;
-                            string rndWrd = GetRandomWord(); // 랜덤 단어 가져오기
+                            givenWord = GetRandomWord(); // 랜덤 단어 가져오기
                             foreach (var c in clients)
                             {
-                                c.Send("8", rndWrd);
+                                c.Send("8", givenWord);
                             }
-                            Invoke(new Action(() => MessageListBox.Items.Add("Sended Word: " + rndWrd)));
+                            Invoke(new Action(() => MessageListBox.Items.Add("Sended Word: " + givenWord)));
                         }
                     }
 

@@ -1,5 +1,4 @@
-﻿using FastText.NetWrapper;
-using System.IO;
+﻿using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
@@ -16,14 +15,9 @@ namespace Client
         string nickname;
         static string str;
 
-        internal FastTextWrapper fastText;
-        internal string filePath = @"D:\Source\Repos\Neural-Words\Client test\cc.ko.300.bin"; // FastText 모델 경로
-
         public Client()
         {
             InitializeComponent();
-            fastText = new FastTextWrapper();
-            fastText.LoadModel(filePath);
             DisconnectButton.Enabled = false;
             isconnected = false;
         }
@@ -188,7 +182,7 @@ namespace Client
             }
         }
 
-        private void HandleMessage(string message) // word similarity 점수 메시지 받아서 server로 전송
+        private void HandleMessage(string message) // word similarity 단어 메시지 받아서 server로 전송
         {
             stream.Write(Encoding.UTF8.GetBytes("9⧫" + message + "◊"));
         }

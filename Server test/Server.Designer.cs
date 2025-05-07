@@ -156,6 +156,7 @@
             TimeLimitSetting.Name = "TimeLimitSetting";
             TimeLimitSetting.Size = new Size(60, 31);
             TimeLimitSetting.TabIndex = 11;
+            TimeLimitSetting.Value = new decimal(new int[] { 15, 0, 0, 0 });
             // 
             // TimeLimitLabel
             // 
