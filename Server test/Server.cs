@@ -15,7 +15,8 @@ namespace Server
         List<Thread> Tt;
         static bool isServerRun;
         static bool isClosing;
-        double[] clientScore;
+        List<KeyValuePair<int, double>> clientScoreSort = new List<KeyValuePair<int, double>>();
+        int[] clientScore;
         int receivedClientCnt = 0;
         string givenWord = "";
 
@@ -45,7 +46,6 @@ namespace Server
         {
             if (int.TryParse(PortTextBox.Text, out int port) && 0 < port && port < 100000)
             {
-
                 T = new Thread(() => ServerLoop(port));
                 T.IsBackground = true;
                 T.Start();
@@ -53,6 +53,8 @@ namespace Server
                 ServerStopButton.Enabled = true;
                 GameStartButton.Enabled = true;
                 GameFinishButton.Enabled = false;
+                TimeLimitSetting.Enabled = true;
+                TimeLimitSetButton.Enabled = true;
                 isServerRun = true;
                 MessageListBox.Items.Add("Server started");
             }
@@ -122,10 +124,10 @@ namespace Server
             }
         }
 
-        void ClientCheck(int clientrealnumber, int clientn)
+        void ClientCheck(int clientRealNumber, int clientn)
         {
-            Client client = clients[clientrealnumber];
-            NetworkStream stream = clients[clientrealnumber].client.GetStream();
+            Client client = clients[clientRealNumber];
+            NetworkStream stream = clients[clientRealNumber].client.GetStream();
             byte[] buffer = new byte[102400];
             buffer[102399] = 255;
             bool error = false;
@@ -262,12 +264,21 @@ namespace Server
                         }
                         score = (dot / Math.Sqrt(norm * givenNorm) + 1) / 2 * 100; // 점수 계산
 
-                        // clientScore[clientrealnumber] += score; 
+                        clientScoreSort.Add(new KeyValuePair<int, double>(clientRealNumber, score));
                         receivedClientCnt++;
                         Invoke(new Action(() => MessageListBox.Items.Add($"{receivedClientCnt}. {client.nickname} Word: {message[1]}, Score: " + score.ToString("F1"))));
                         if (receivedClientCnt == clients.Count)
                         {
                             receivedClientCnt = 0;
+                            clientScoreSort.Sort((a, b) => a.Key.CompareTo(b.Key));
+                            int scoreCnt = 0;
+                            foreach (var c in clientScoreSort)
+                            {
+                                scoreCnt++;
+                                clientScore[c.Key] += scoreCnt;
+                            }
+                            clientScoreSort.Clear();
+
                             givenWord = GetRandomWord(); // 랜덤 단어 가져오기
                             foreach (var c in clients)
                             {
@@ -386,7 +397,7 @@ namespace Server
 
         void Game() // 게임 플레이
         {
-            clientScore = Enumerable.Repeat<double>(0, clients.Count).ToArray<double>();
+            clientScore = Enumerable.Repeat<int>(0, clients.Count).ToArray<int>(); // client 수만큼 0으로 초기화
 
             foreach (var c in clients)
             {
@@ -427,8 +438,6 @@ namespace Server
         {
             GameFinishButton.Enabled = false; // 게임 종료 버튼 비활성화
             GameStartButton.Enabled = true; // 게임 시작 버튼 활성화
-            TimeLimitSetting.Enabled = false;
-            TimeLimitSetButton.Enabled = false;
             foreach (var c in clients)
             {
                 c.Send("7", "Game Ended");

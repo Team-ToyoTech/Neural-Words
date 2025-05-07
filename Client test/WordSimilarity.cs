@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FastText.NetWrapper;
 using static System.Formats.Asn1.AsnWriter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
