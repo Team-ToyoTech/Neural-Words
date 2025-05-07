@@ -26,6 +26,8 @@ namespace Server
             ServerStopButton.Enabled = false;
             GameStartButton.Enabled = false;
             GameFinishButton.Enabled = false;
+            TimeLimitSetting.Enabled = false;
+            TimeLimitSetButton.Enabled = false;
             isClosing = false;
             IPLabel.Text = "로컬 IP주소:\n" + GetLocalIPAddress() + "\n외부 IP주소:\n" + GetExternalIPAddress();
         }
@@ -62,6 +64,7 @@ namespace Server
         7: 게임 종료
         8: 단어 전송
         9: 단어 점수 전송
+        10: 시간 제한 전송
          */
         // Split 문자 : ⧫
         // 송신 Check 문자 : ◊
@@ -289,6 +292,8 @@ namespace Server
             ServerStartButton.Enabled = true;
             GameStartButton.Enabled = false;
             GameFinishButton.Enabled = false;
+            TimeLimitSetButton.Enabled = false;
+            TimeLimitSetting.Enabled = false;
             isServerRun = false;
             MessageListBox.Items.Add("Server stopped");
             server.Stop();
@@ -343,6 +348,8 @@ namespace Server
             {
                 GameFinishButton.Enabled = true; // 게임 종료 버튼 활성화
                 GameStartButton.Enabled = false; // 게임 시작 버튼 비활성화
+                TimeLimitSetButton.Enabled = true;
+                TimeLimitSetting.Enabled = true;
                 Thread t = new Thread(Game);
                 t.IsBackground = true;
                 receivedClientCnt = 0;
@@ -397,6 +404,8 @@ namespace Server
         {
             GameFinishButton.Enabled = false; // 게임 종료 버튼 비활성화
             GameStartButton.Enabled = true; // 게임 시작 버튼 활성화
+            TimeLimitSetting.Enabled = false;
+            TimeLimitSetButton.Enabled = false;
             foreach (var c in clients)
             {
                 c.Send("7", "Game Ended");
@@ -411,6 +420,15 @@ namespace Server
             {
                 ServerStartButton.PerformClick();
             }
+        }
+
+        private void TimeLimitSetButton_Click(object sender, EventArgs e)
+        {
+            foreach (var c in clients)
+            {
+                c.Send("10", TimeLimitSetting.Value.ToString());
+            }
+            Invoke(new Action(() => MessageListBox.Items.Add($"Time Limit Setted: {TimeLimitSetting.Value}s")));
         }
     }
 

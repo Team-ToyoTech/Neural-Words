@@ -38,7 +38,11 @@
             ConnectedListBox = new ListBox();
             GameFinishButton = new Button();
             GameStartButton = new Button();
+            TimeLimitSetting = new NumericUpDown();
+            TimeLimitLabel = new Label();
+            TimeLimitSetButton = new Button();
             ConnectedGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TimeLimitSetting).BeginInit();
             SuspendLayout();
             // 
             // PortLabel
@@ -105,11 +109,11 @@
             // ConnectedGroupBox
             // 
             ConnectedGroupBox.Controls.Add(ConnectedListBox);
-            ConnectedGroupBox.Location = new Point(328, 184);
+            ConnectedGroupBox.Location = new Point(328, 241);
             ConnectedGroupBox.Margin = new Padding(2);
             ConnectedGroupBox.Name = "ConnectedGroupBox";
             ConnectedGroupBox.Padding = new Padding(2);
-            ConnectedGroupBox.Size = new Size(308, 306);
+            ConnectedGroupBox.Size = new Size(308, 249);
             ConnectedGroupBox.TabIndex = 8;
             ConnectedGroupBox.TabStop = false;
             ConnectedGroupBox.Text = "접속자";
@@ -118,10 +122,10 @@
             // 
             ConnectedListBox.FormattingEnabled = true;
             ConnectedListBox.ItemHeight = 25;
-            ConnectedListBox.Location = new Point(5, 33);
+            ConnectedListBox.Location = new Point(5, 29);
             ConnectedListBox.Margin = new Padding(2);
             ConnectedListBox.Name = "ConnectedListBox";
-            ConnectedListBox.Size = new Size(299, 254);
+            ConnectedListBox.Size = new Size(299, 204);
             ConnectedListBox.TabIndex = 0;
             // 
             // GameFinishButton
@@ -146,11 +150,42 @@
             GameStartButton.UseVisualStyleBackColor = true;
             GameStartButton.Click += GameStartButton_Click;
             // 
+            // TimeLimitSetting
+            // 
+            TimeLimitSetting.Location = new Point(418, 205);
+            TimeLimitSetting.Name = "TimeLimitSetting";
+            TimeLimitSetting.Size = new Size(60, 31);
+            TimeLimitSetting.TabIndex = 11;
+            // 
+            // TimeLimitLabel
+            // 
+            TimeLimitLabel.AutoSize = true;
+            TimeLimitLabel.Location = new Point(323, 207);
+            TimeLimitLabel.Margin = new Padding(2, 0, 2, 0);
+            TimeLimitLabel.Name = "TimeLimitLabel";
+            TimeLimitLabel.Size = new Size(90, 25);
+            TimeLimitLabel.TabIndex = 12;
+            TimeLimitLabel.Text = "시간 제한";
+            // 
+            // TimeLimitSetButton
+            // 
+            TimeLimitSetButton.Location = new Point(483, 201);
+            TimeLimitSetButton.Margin = new Padding(2);
+            TimeLimitSetButton.Name = "TimeLimitSetButton";
+            TimeLimitSetButton.Size = new Size(154, 36);
+            TimeLimitSetButton.TabIndex = 13;
+            TimeLimitSetButton.Text = "시간 제한 설정";
+            TimeLimitSetButton.UseVisualStyleBackColor = true;
+            TimeLimitSetButton.Click += TimeLimitSetButton_Click;
+            // 
             // Server
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(647, 501);
+            Controls.Add(TimeLimitSetButton);
+            Controls.Add(TimeLimitLabel);
+            Controls.Add(TimeLimitSetting);
             Controls.Add(GameStartButton);
             Controls.Add(MessageListBox);
             Controls.Add(GameFinishButton);
@@ -166,6 +201,7 @@
             Text = "Server";
             FormClosing += Server_FormClosing;
             ConnectedGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)TimeLimitSetting).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,5 +218,8 @@
         private ListBox ConnectedListBox;
         private Button GameFinishButton;
         private Button GameStartButton;
+        private NumericUpDown TimeLimitSetting;
+        private Label TimeLimitLabel;
+        private Button TimeLimitSetButton;
     }
 }

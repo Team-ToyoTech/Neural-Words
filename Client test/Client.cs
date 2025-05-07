@@ -173,8 +173,13 @@ namespace Client
                         Invoke(new Action(() => MessageListBox.Items.Add("Received Word: " + message[1])));
                         wordSimilarity.ReceiveMessage(message[1]);
                     }
+                    else if (message[0] == "10")
+                    {
+                        Invoke(new Action(() => MessageListBox.Items.Add("Time Limit Setted: " + message[1])));
+                        wordSimilarity.ReceiveTimeLimit(message[1]);
+                    }
 
-                    Invoke(new Action(() => MessageListBox.TopIndex = MessageListBox.Items.Count - 1));
+                        Invoke(new Action(() => MessageListBox.TopIndex = MessageListBox.Items.Count - 1));
                 }
                 catch (Exception ex)
                 {

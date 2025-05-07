@@ -89,6 +89,11 @@ namespace Client
             Timer.Start();
         }
 
+        public void ReceiveTimeLimit(string message)
+        {
+            totalTime = Int32.Parse(message);
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             remainingTime--;
