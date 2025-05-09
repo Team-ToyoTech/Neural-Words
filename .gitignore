@@ -398,5 +398,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/Server test/wordList-utf8.txt
-/Client test/cc.ko.300.bin
+/wordList-utf8.txt
+/cc.ko.300.bin
